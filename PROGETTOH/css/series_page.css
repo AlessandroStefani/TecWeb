@@ -55,20 +55,82 @@ ul li:hover a{
     margin-right: 16px;
 }
 
-main{
+div.image_container{
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
-
-main #center_image{
+div #center_image{
     max-width: 25%;
     max-height: 40%;
     padding-top: 2%;
+
 }
 
-#center{
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3%;
+    padding-left: 16%;
+    flex-wrap: wrap;
+}
+
+main > article {
+    width: 100%;
+    padding-top: 3%;
+    
+}
+
+main > article> section > div > img {
+    max-width: 30%;
+    max-height: 30%;
+}
+
+main > article> section > p {
+    padding-top: 1%;
+    font-size: 20px;
+}
+
+img#article_image{
+    max-width: 30%;
+    max-height: 30%;
+}
+
+aside.right_aside{
+    text-align: right;
+}
+
+div.notification_check{
+    padding-top: 3%;
+    padding-right: 7%;
+    padding-bottom: 3%;
     text-align: right;
 
+}
+div.notification_check > label{
+    font-size: 20px;
+}
+
+div.serie_title{
+    text-align: center;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15%;
+}
+
+
+div.text_bar{
+    height: 5%;
+    width: 70%;
+    position: fixed !important;
+    text-align: center;
+    justify-content: center;
+    bottom: 4%;
+    background-color: grey;
 }
