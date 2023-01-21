@@ -8,7 +8,7 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <aside>        
+        <nav>        
             <div class="sidebar">
                 <header>
                     MY MENNE
@@ -27,61 +27,90 @@
                     <button id="back_button">Home</button>
                 </div>
             </div>
-        </aside>
+        </nav>
+
         <aside class="right_aside">
             <div class="notification_check">
-                <input type="radio" id="notif">
+                <input type="checkbox" id="notif">
                 <label for="notif">Ricevi Notifiche</label>
             </div>
         </aside>
-        <div class="serie_title">
-            <h1> Titolo Serie </h1>
-        </div>
 
-        <div class="image_container">
-            <img id="center_image" src="../img/LastSummoner.jpg" alt="">    
-        </div>
+        <div class="serie_info">
+            <div class="serie_title">
+                <h1> Titolo Serie </h1>
+            </div>
 
+            <div class="image_container">
+                <img id="center_image" src="../img/LastSummoner.jpg" alt="">    
+            </div>
+    
+            <div class="serie_description">
+                <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint repellat tempore consequuntur neque nisi nemo hic eum recusandae laborum sequi, eius nobis quidem culpa, aspernatur id, et officia ut delectus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit minus ipsum, rem numquam aliquid officia quasi minima amet ab quas incidunt consequatur praesentium consectetur vitae culpa et repellendus? Enim, totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis provident distinctio excepturi repellendus, sit eum nihil autem neque architecto impedit obcaecati debitis quibusdam aliquam alias, dolorum aperiam laboriosam assumenda saepe.</p>
+            </div>    
+    
+        </div>
 
         <main>
             <article class="main_article">
                 <header>
-                    <h2> Titolo articolo </h2>
+                    <div class="profile_info">
+                        <img src="../img/ProfilePic.png" alt="" >
+                        <p class="user_name"> Profile Name </p>
+                        <p class="timestamp"> 12:00 </p>
+                    </div>
                 </header>
                 <section>
+                    <div class="comment">
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!
+                        </p>    
+                    </div>
+                </section>
+            </article>   
+
+            <article class="main_article">
+                <header>
+                    <div class="profile_info">
+                        <img src="../img/fotoprofilo1.PNG" alt="" >
+                        <p class="user_name"> Profile Name </p>
+                        <p class="timestamp"> 12:00 </p>
+                    </div>
+                </header>
+                <section>
+                    <div class="comment">
+                        <img src="../img/PogAinsley.jpg" alt="">
+                    </div>
+                </section>
+            </article>    
+
+            <article class="main_article">
+                <header>
+                    <div class="profile_info">
+                        <img src="../img/fotoprofilo2.PNG" alt="" >
+                        <p class="user_name"> Profile Name </p>
+                        <p class="timestamp"> 12:00 </p>
+                    </div>
+                </header>
+                <section class="comment">
+                    <div>
+                        <img src="../img/PogAinsley.jpg" alt="">
+                    </div>
                     <p>
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!
                     </p>
                 </section>
             </article>    
+
             <article class="main_article">
                 <header>
-                    <h2> Titolo articolo </h2>
-                </header>
-                <section>
-                    <div>
-                        <img src="../img/PogAinsley.jpg" alt="">
+                    <div class="profile_info">
+                        <img src="../img/fotoprofilo3.PNG" alt="" >
+                        <p class="user_name"> Profile Name </p>
+                        <p class="timestamp"> 12:00 </p>
                     </div>
-                </section>
-            </article>    
-            <article class="main_article">
-                <header>
-                    <h2> Titolo articolo </h2>
                 </header>
-                <section>
-                    <div>
-                        <img src="../img/PogAinsley.jpg" alt="">
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!
-                    </p>
-                </section>
-            </article>    
-            <article class="main_article">
-                <header>
-                    <h2> Titolo articolo </h2>
-                </header>
-                <section>
+                <section class="comment">
                     <p>
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!
                     </p>
@@ -90,12 +119,15 @@
 
         </main>
 
-
-
         <footer>
             <div class="text_bar">
-                <input type="text" id="text_b" >
-                <label for="text_b"> textarea </label>
+                <img src="../img/plusImg.jpg" alt="">
+                <div class="input_container">
+                    <input type="text" id="text_b">
+                </div>
+                <div class="button_textbox">
+                    <button>Premi</button>
+                </div>
             </div>
         </footer>
 

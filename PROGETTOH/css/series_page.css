@@ -1,15 +1,19 @@
+/* stile assegnato a tutti gli elementi del documento */
 *{
     padding: 0;
     margin: 0;
     list-style: none;
     text-decoration: none;
 }
+
+/* stile della sidebar */
 .sidebar{
-    position: fixed;
+    position: fixed !important;
     left: 0;
     width: 14%;
     height: 100%;
     background-color: #062738;
+    min-width: 160px;
 }
 
 .sidebar header{
@@ -55,32 +59,69 @@ ul li:hover a{
     margin-right: 16px;
 }
 
+/* stile area centrale con titolo, immagine e descrizione serie */
+div.serie_info{
+    text-align: center;
+}
+
+div.serie_info > div{
+    padding-top: 2%;
+}
+
+div.serie_title{
+    text-align: center;
+}
+
 div.image_container{
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
+
 div #center_image{
     max-width: 25%;
     max-height: 40%;
-    padding-top: 2%;
-
 }
 
+div.serie_description{
+    width: 100%;
+}
+
+div.serie_description > p{
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+/* stile della aside di destra dedicata all'opzione per ricevere notifiche */
+aside.right_aside{
+    text-align: right;
+}
+
+div.notification_check{
+    padding-top: 3%;
+    padding-right: 7%;
+    padding-bottom: 3%;
+    text-align: right;
+
+}
+div.notification_check > label{
+    font-size: 20px;
+}
+
+/* stile di tutta la sezione di main */
 main{
     display: flex;
-    justify-content: center;
-    align-items: center;
     padding-bottom: 3%;
     padding-left: 16%;
     flex-wrap: wrap;
 }
 
+/* stile singolo articolo */
 main > article {
     width: 100%;
     padding-top: 3%;
-    
+    padding-bottom: 3%;
 }
 
 main > article> section > div > img {
@@ -98,25 +139,36 @@ img#article_image{
     max-height: 30%;
 }
 
-aside.right_aside{
-    text-align: right;
+main > article > header > div > img {
+    max-width: 10%;
+    max-height: 10%;
 }
 
-div.notification_check{
-    padding-top: 3%;
-    padding-right: 7%;
-    padding-bottom: 3%;
-    text-align: right;
-
+.profile_info{
+    display: flex;
+    align-items: center;
 }
-div.notification_check > label{
+
+.profile_info > p {
+    padding-left: 5%;
+}
+
+.profile_info > p.user_name{
     font-size: 20px;
+    font-weight: 500;
+    font-family: Copperplate, Papyrus, fantasy;
 }
 
-div.serie_title{
-    text-align: center;
+.profile_info > p.timestamp{
+    font-size: 13px;
+    font-family: "Courier New", Courier, monospace;
 }
 
+.comment{
+    padding-top: 1%;
+}
+
+/* stile della textbar utilizzata per mandare nuovi commenti */
 footer{
     display: flex;
     justify-content: center;
@@ -124,13 +176,38 @@ footer{
     padding-left: 15%;
 }
 
-
 div.text_bar{
-    height: 5%;
-    width: 70%;
+    display: flex;
+    height: 4%;
+    width: 87%;
     position: fixed !important;
-    text-align: center;
-    justify-content: center;
-    bottom: 4%;
+    text-align: left;
+    align-items: center;
+    justify-content: flex-start;
+    bottom: 0;
     background-color: grey;
+}
+
+div.text_bar > img {
+    max-width: 30px;
+    max-height: 30px;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+div.text_bar > div.input_container{
+    display: inline-block;
+    width: 90%;
+}
+
+div.text_bar > div > input {
+    resize: both;
+    width: 100%;
+}
+
+div.text_bar > div.button_textbox {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+div.text_bar > div > button {
 }
