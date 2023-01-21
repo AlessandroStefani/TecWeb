@@ -15,13 +15,26 @@ class DbHelper{
         $query = "INSERT INTO utente (username, email, password) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sss', $username, $email, $safepword);
-        $stmt->execute();
 
-        return $stmt->insert_id;
+        return $stmt->execute();
     }
 
-    public function checkLogin($username, $email, $password){
-        $query = "SELECT idutente, username, email FROM utente WHERE s";
+    public function checkLogin($email, $password){
+        $query = "SELECT idutente, username, email, password FROM utente WHERE email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        if(count($result)==0){
+            return false;
+        }
+
+        if(!password_verify($password, $result[0]["password"])){
+            return false;
+        }
+        registerLoggedUser($result[0]);
+        return true;
     }
 }
 

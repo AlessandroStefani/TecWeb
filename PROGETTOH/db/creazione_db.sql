@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS `progweb`.`utente` (
     `username` VARCHAR(128) NOT NULL,
     `email` VARCHAR(128) NOT NULL,
     `password` VARCHAR(512) NOT NULL,
-    PRIMARY KEY (`idutente`)
+    PRIMARY KEY (`idutente`),
+    UNIQUE(`email`)
 )
 ENGINE = InnoDB;
 
