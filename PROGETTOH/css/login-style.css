@@ -1,3 +1,47 @@
 body {
-    background-image: url("../img/meme-background.png");
+    background-image: url("../img/red-black-pattern.jpg");
+}
+
+main {
+    color: black;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    height: 50%;
+    width: 30%;
+    margin-top: 10%;
+    margin-left: 35%;
+    box-shadow: 3px 3px 5px grey;
+}
+
+form {
+    margin: 10px;
+    padding: 10px;
+}
+
+input#email {
+    text-transform: lowercase;
+}
+
+input {
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 8px 0px;
+}
+
+button {
+    width: auto;
+    padding: 10px 18px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+div > p {
+    margin: 5px;
 }

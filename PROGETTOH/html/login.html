@@ -6,19 +6,21 @@
     </head>
     <body>
         <main>
-            <form action="#" method="POST">
-                <h1>Login</h1>
-                <ul>
-                    <li>
-                        <label for="username">Username:</label><input type="text" id="username" name="username" />
-                    </li>
-                    <li>
-                        <label for="password">Password:</label><input type="password" id="password" name="password" />
-                    </li>
-                    <li>
-                        <input type="submit" name="submit" value="Invia" />
-                    </li>
-                </ul>
+            <h1>Accedi</h1>
+            <form action="#" method="POST">             
+                <div>
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Inserisci Username o E-mail" name="uname" required>
+                
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Inserisci Password" name="psw" required>
+                    
+                    <div>
+                        <button type="submit">Accedi</button>
+                        <p>oppure</p>
+                        <button onclick="document.location='register.html'">Registrati</button>
+                    </div>
+                </div>
             </form>
         </main>
     </body>

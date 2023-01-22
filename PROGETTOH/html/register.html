@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "it">
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" type="text/css" href="../css/login-style.css" />
+    </head>
+    <body>
+        <main>
+            <h1>Registrati</h1>
+            <form action="#" method="POST">             
+                <div>
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Inserisci Username" name="uname" required>
+                    
+                    <label for="email"><b>E-mail</b></label>
+                    <input type="text" placeholder="Inserisci E-mail" name="email" required>
+                
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Inserisci Password" name="psw" required>
+
+                    <label for="cpsw"><b>Conferma Password</b></label>
+                    <input type="password" placeholder="Conferma Password" name="cpsw" required>
+                        
+                    <div>
+                        <button type="submit">Registrati</button>
+                        <p>oppure</p>
+                        <button onclick="document.location='login.html'">Accedi</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>
