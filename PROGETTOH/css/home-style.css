@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header > nav {
+    background-color: rgb(60, 60, 60);
+    color: white;
+    text-align: center;
+    padding: 2% 0;
+    width: 100%;
+    /*perchè non funzia?*/
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+main > div > p {
+    display: inline-block;
+    background-color: black;
+    color:wheat;
+    padding: 20px 0;
+    border-radius: 5px;
+    width: 30%;
+}
+
+main > div {
+    text-align: center;
+    width: 100%;
+    background-color: grey;
+}
+
+main > nav {
+    text-align: center;
+    border-style: solid;
+}
+
+main > nav > h2 {
+    background-color: wheat;
+    display: block;
+    text-align: center;
+}
+
+main > nav > a {
+    display: inline-block;
+}
