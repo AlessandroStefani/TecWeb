@@ -19,6 +19,10 @@ form {
     padding: 10px;
 }
 
+input#email {
+    text-transform: lowercase;
+}
+
 input {
     width: 100%;
     display: inline-block;

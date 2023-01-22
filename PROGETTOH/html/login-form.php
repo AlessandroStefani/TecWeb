@@ -13,10 +13,10 @@
                 <?php endif; ?>         
                 <div>
                     <label for="email"><b>E-mail</b></label>
-                    <input type="text" placeholder="Inserisci E-mail" name="email" required>
+                    <input type="text" placeholder="Inserisci E-mail" name="email" id="email" required>
                 
                     <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Inserisci Password" name="psw" required>
+                    <input type="password" placeholder="Inserisci Password" name="psw" id="psw" required>
                     
                     <div>
                         <button type="submit">Accedi</button>
