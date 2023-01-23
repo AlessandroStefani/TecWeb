@@ -16,6 +16,15 @@ CREATE TABLE IF NOT EXISTS `progweb`.`utente` (
 )
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `progweb`.`post` (
+    `idpost` INT NOT NULL AUTO_INCREMENT,
+    `testo` TEXT NOT NULL,
+    `immagine` VARCHAR(128),
+    `autore` INT NOT NULL,
+    PRIMARY KEY (`idpost`),    
+    FOREIGN KEY (`autore`) REFERENCES `progweb`.`utente` (idutente)
+)
+
 CREATE TABLE IF NOT EXISTS `progweb`.`film` (
     `idfilm` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(128) NOT NULL,
@@ -24,6 +33,27 @@ CREATE TABLE IF NOT EXISTS `progweb`.`film` (
     PRIMARY KEY (`idfilm`)
 )
 ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `progweb`.`serietv` (    
+    `idserietv` INT NOT NULL AUTO_INCREMENT,
+    `nome` VARCHAR(128) NOT NULL,
+    `stagioni` INT NOT NULL,
+    `episodi` INT NOT NULL,
+    `durata episodi` TIME NOT NULL,
+    `trama` TEXT DEFAULT "trama non disponibile",
+    PRIMARY KEY (`idserietv`)
+)
+
+CREATE TABLE IF NOT EXISTS `progweb`.`anime` (    
+    `idanime` INT NOT NULL AUTO_INCREMENT,
+    `nome` VARCHAR(128) NOT NULL,
+    `stagioni` INT NOT NULL,
+    `episodi` INT NOT NULL,
+    `durata episodi` TIME NOT NULL,
+    `trama` TEXT DEFAULT "trama non disponibile",
+    PRIMARY KEY (`idanime`)
+)
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
