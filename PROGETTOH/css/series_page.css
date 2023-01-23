@@ -1,6 +1,6 @@
 /* stile assegnato a tutti gli elementi del documento */
 body{
-    min-width: 480px;
+    min-width: 500px;
 }
 
 *{
@@ -49,6 +49,7 @@ body{
 .nav_bar a i{
     width: 100%;
     margin-right: 1%;
+    color: 'white'
 }
 
 .nav_bar > img{ 
@@ -64,6 +65,7 @@ div.serie_info{
 
 div.serie_info > div{
     padding-top: 2%;
+
 }
 
 div.serie_title{
@@ -83,12 +85,17 @@ div #center_image{
 
 div.serie_description{
     width: 100%;
+    padding-bottom: 5%;
+
 }
 
 div.serie_description > p{
     text-align: center;
     width: 50%;
+    border: 4px rgb(243, 112, 5) solid;
+    border-radius: 10px;
     margin: auto;
+    padding: 1%;
 }
 
 /* stile della aside di destra dedicata all'opzione per ricevere notifiche */
@@ -111,17 +118,18 @@ div.notification_check > label{
 
 /* stile di tutta la sezione di main */
 main{
+    border-top: 5px solid rgba(8, 7, 79, 0.684);
     display: flex;
     margin: auto;
     flex-wrap: wrap;
-    padding: 7% 7%;
+    padding: 6% 6%;
+    margin-bottom: 60px;
 }
 
 /* stile singolo articolo */
 main > article {
     width: 100%;
-    padding-top: 3%;
-    padding-bottom: 3%;
+    padding: 1.5% 1% 1.5% 1%;
 }
 
 main > article> section > div > img {
@@ -129,9 +137,19 @@ main > article> section > div > img {
     max-height: 30%;
 }
 
-main > article> section > p {
+main > article > section{
+    padding: 1% 1%;
+}
+
+main > article > section > p {
     padding-top: 1%;
     font-size: 20px;
+}
+
+main > article > section.comment {
+    border: rgb(237, 116, 16) solid 3px;
+    border-radius: 5px;
+    padding: .75%;
 }
 
 img#article_image{
@@ -140,17 +158,27 @@ img#article_image{
 }
 
 main > article > header > div > img {
+    padding: .5%;
     max-width: 10%;
     max-height: 10%;
+    border: rgba(62, 29, 2, 0.598) solid 2px;
+    border-radius: 5px;
+}
+
+main > article > section > p{
+    padding: 1%;
 }
 
 .profile_info{
     display: flex;
     align-items: center;
+    padding: .5%;
+    
 }
 
 .profile_info > p {
-    padding-left: 5%;
+    padding-left: 4%;
+    padding-right: 2%;
 }
 
 .profile_info > p.user_name{
@@ -185,13 +213,16 @@ div.text_bar{
     justify-content: flex-start;
     bottom: 0;
     background-color: grey;
+    border-radius: 2px;
 }
 
-div.text_bar > img {
+div.text_bar > i {
     max-width: 30px;
     max-height: 30px;
-    padding-left: 1%;
-    padding-right: 1%;
+    padding: .75%;
+    border-radius: 70px;
+    background-color: white;
+    margin: 0px 10px;
 }
 
 div.text_bar > div.input_container{
@@ -202,9 +233,21 @@ div.text_bar > div.input_container{
 div.text_bar > div > input {
     resize: both;
     width: 100%;
+    border-radius: 7px;
+    padding: 5px;
 }
 
 div.text_bar > div.button_textbox {
     padding-left: 2%;
-    padding-right: 2%;
+    padding-right: 1%;
+}
+
+div.text_bar > div.button_textbox > button {
+    padding: 10px;
+    border-radius: 50px;
+}
+
+div.text_bar > div.button_textbox > button:hover {
+    background-color: #3f7fda;
+    transition: 0.35s;
 }
