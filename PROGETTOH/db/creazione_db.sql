@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS `progweb`.`utente` (
     `username` VARCHAR(128) NOT NULL,
     `email` VARCHAR(128) NOT NULL,
     `password` VARCHAR(512) NOT NULL,
+    `foto profilo` VARCHAR(128),
     PRIMARY KEY (`idutente`),
     UNIQUE(`email`)
 )
@@ -21,15 +22,18 @@ CREATE TABLE IF NOT EXISTS `progweb`.`post` (
     `testo` TEXT NOT NULL,
     `immagine` VARCHAR(128),
     `autore` INT NOT NULL,
+    `data` DATETIME NOT NULL,
     PRIMARY KEY (`idpost`),    
     FOREIGN KEY (`autore`) REFERENCES `progweb`.`utente` (idutente)
 )
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `progweb`.`film` (
     `idfilm` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(128) NOT NULL,
-    `durata` TIME NOT NULL,
+    `durata` INT NOT NULL,
     `trama` TEXT DEFAULT "trama non disponibile",
+    `immagine` VARCHAR(128),
     PRIMARY KEY (`idfilm`)
 )
 ENGINE = InnoDB;
@@ -39,21 +43,49 @@ CREATE TABLE IF NOT EXISTS `progweb`.`serietv` (
     `nome` VARCHAR(128) NOT NULL,
     `stagioni` INT NOT NULL,
     `episodi` INT NOT NULL,
-    `durata episodi` TIME NOT NULL,
+    `durata episodi` INT NOT NULL,
     `trama` TEXT DEFAULT "trama non disponibile",
+    `immagine` VARCHAR(128),
     PRIMARY KEY (`idserietv`)
 )
+ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `progweb`.`anime` (    
     `idanime` INT NOT NULL AUTO_INCREMENT,
     `nome` VARCHAR(128) NOT NULL,
     `stagioni` INT NOT NULL,
     `episodi` INT NOT NULL,
-    `durata episodi` TIME NOT NULL,
+    `durata episodi` INT NOT NULL,
     `trama` TEXT DEFAULT "trama non disponibile",
+    `immagine` VARCHAR(128),
     PRIMARY KEY (`idanime`)
 )
+ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `progweb`.`post_associati` (
+    `idpost` INT,
+    `idfilm` INT,
+    `idserietv` INT,
+    `idanime` INT,
+    FOREIGN KEY (`idpost`) REFERENCES `progweb`.`post` (idpost),
+    FOREIGN KEY (`idfilm`) REFERENCES `progweb`.`film` (idfilm),
+    FOREIGN KEY (`idserietv`) REFERENCES `progweb`.`serietv` (idserietv),
+    FOREIGN KEY (`idanime`) REFERENCES `progweb`.`anime` (idanime)
+)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `progweb`.`content_seguito` (
+    `idutente` INT,
+    `idfilm` INT,
+    `idserietv` INT,
+    `idanime` INT,
+    `notifiche` BOOLEAN DEFAULT 0, 
+    FOREIGN KEY (`idutente`) REFERENCES `progweb`.`utente` (idutente),
+    FOREIGN KEY (`idfilm`) REFERENCES `progweb`.`film` (idfilm),
+    FOREIGN KEY (`idserietv`) REFERENCES `progweb`.`serietv` (idserietv),
+    FOREIGN KEY (`idanime`) REFERENCES `progweb`.`anime` (idanime)
+)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
