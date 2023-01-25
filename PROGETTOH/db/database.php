@@ -60,8 +60,7 @@ class DbHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $idutente, $idserietv);
 
-        return $stmt->execute();
-        
+        return $stmt->execute();        
     }
 
     public function addFollowedAnime($idanime){
@@ -69,8 +68,34 @@ class DbHelper{
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $idutente, $idanime);
 
-        return $stmt->execute();
-        
+        return $stmt->execute();        
+    }
+
+    public function getAllAnime(){
+        $query = "SELECT * FROM anime";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllFilm(){
+        $query = "SELECT * FROM film";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllserietv(){
+        $query = "SELECT * FROM serietv";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }
 
