@@ -37,14 +37,40 @@ class DbHelper{
         return true;
     }
 
-    public function getFollowedContent($userid){
+    public function getFollowedContent($idutente){
         $query = "SELECT * FROM content_seguito WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $userid);
+        $stmt->bind_param('i', $idutente);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addFollowedFilm($idutente, $idfilm){
+        $query = "INSERT INTO content_seguito (idutente, idfilm) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idfilm);
+
+        return $stmt->execute();
+    }
+
+    public function addFollowedSerieTv($idserietv){
+        $query = "INSERT INTO content_seguito (idutente, idserietv) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idserietv);
+
+        return $stmt->execute();
+        
+    }
+
+    public function addFollowedAnime($idanime){
+        $query = "INSERT INTO content_seguito (idutente, idanime) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idanime);
+
+        return $stmt->execute();
+        
     }
 }
 
