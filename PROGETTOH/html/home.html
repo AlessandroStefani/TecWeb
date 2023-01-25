@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="../css/home-style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -14,36 +15,48 @@
         </nav>
     </header>
     <main>
-        <div>
+        <section class="watchtime">
             <p>qui ci va il tempo totale</p>
             <p>e qui il numero di episodi e film visti</p>
+        </section>
+
+        <div class="scroller" id="film">
+            <h2>Film</h2>
+            <section class="img-container">
+                <a href="#">
+                    <img src="../img/red-black-pattern.jpg">
+                    <p class="serie-title">Titolo Serie</p>                     
+                    <span class="notification-badge">5</span>
+                </a>
+                <a href="#"><img src="../img/red-black-pattern.jpg">
+                    <p class="serie-title">Titolo Serie</p>               
+                    <span class="notification-badge">5</span>
+                </a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
+                <a href="#"><div id="add-content"></div></a>
+            </section>
         </div>
 
-        <nav class="scroller" id="film">
-            <h2>Film</h2>
-            <section class="link-container">
-                <a><img class="locandina" src="../img/red-black-pattern.jpg"></a>
-                <a><img class="locandina" src="../img/red-black-pattern.jpg"></a>
-                <a><img class="locandina" src="../img/red-black-pattern.jpg"></a>
-                <a><img class="locandina" src="../img/red-black-pattern.jpg"></a>
-                <a><img class="locandina" src="../img/red-black-pattern.jpg"></a>
-            </section>
-            <a class="prev">&#10094;</a>
-            <a class="next">&#10095;</a>
-        </nav>
-
-        <nav class="scroller" id="serieTv">
+        <div class="scroller" id="serieTv">
             <h2>Serie Tv</h2>
-            <a><img src="../img/red-black-pattern.jpg"></a>
-            <a><img src="../img/red-black-pattern.jpg"></a>
-            <a><img src="../img/red-black-pattern.jpg"></a>
-        </nav>
+            <section class="img-container">
+                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
+                <a href="#"><div id="add-content"></div></a>
+            </section>
+        </div>
 
-        <nav class="scroller" id="anime">
+        <div class="scroller" id="anime">
             <h2>Anime</h2>
-            <a><img src="../img/red-black-pattern.jpg"></a>
-        </nav>
+            <section class="img-container">
+                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
+                <a href="#"><div id="add-content"></div></a>
+            </section>
+        </div>
     </main>
 </body>
-
+<script src="../js/home.js" type="text/javascript"></script>
 </html>

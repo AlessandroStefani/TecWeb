@@ -6,9 +6,6 @@ body {
     margin: 0;
     padding: 0;
 }
-.locandina {
-    aspect-ratio: auto;
-}
 
 header > nav {
     background-color: rgb(60, 60, 60);
@@ -22,7 +19,7 @@ header > nav {
     top: 0;
 }
 
-main > div > p {
+.watchtime > p {
     display: inline-block;
     background-color: black;
     color:wheat;
@@ -31,37 +28,67 @@ main > div > p {
     width: 30%;
 }
 
-main > div {
+.watchtime {
     text-align: center;
     width: 100%;
     background-color: grey;
 }
 
-main > nav {
+.scroller {
     text-align: center;
     border-top: solid;
 }
 
-main > nav > h2 {
+.scroller > h2 {
     background-color: wheat;
     display: block;
     text-align: center;
 }
 
-main > nav > a {
+.img-container {
+    overflow: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scroller a:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+} 
+
+.img-container::-webkit-scrollbar {
+    display: none;
+}
+
+.img-container a {
+    position: relative;
+    padding: 10px 20px;
     display: inline-block;
+    text-align: center;
+    text-decoration: none;
 }
 
-.prev, .next {
-  color: black;
-  position:flex;
-  background-color: red;  
+#add-content {
+    background-color: gray;
+    margin: 10px 20px;
+    display: inline-block;
+    height: 400px;
+    width: 275px;
 }
 
-.prev {
-    float: left;
+.serie-title {
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
 }
 
-.next {
-    float: right;
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: green;
+    color: white;
 }
