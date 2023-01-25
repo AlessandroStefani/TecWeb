@@ -36,6 +36,35 @@ class DbHelper{
         registerLoggedUser($result[0]);
         return true;
     }
+
+
+    public function getSerieInfoByID($id){
+        $query = "SELECT * FROM serietv WHERE idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function getPostSeriebyID($id){
+        $query = "SELECT u.username AS username, u.foto profilo AS foto, p.testo AS testo, p.immagine AS immagine, p.data AS data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.postid=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function getUserInfobyID($id){
+        $query = "SELECT username, foto profilo FROM utente WHERE idutente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
 }
 
 ?>
