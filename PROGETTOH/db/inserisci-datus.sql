@@ -1,3 +1,7 @@
+INSERT INTO `utente` (`idutente`, `username`, `email`, `password`, `foto profilo`) VALUES
+(1, 'mastercast', 'magnasas@sassezza.com', '$2y$10$KJE6fjPZZkIL9oImmiC2JuNAL1v0noDZBspzU7kJpso9tpWRcbLeS', 'fotoprofilo1.PNG'),
+(2, 'Amogus', 'SussyBaka@SussyBukky.com', '$2y$10$YBcv4M6kUYbBDlPpPfuA5uiLC6rfRp2B1OPCBgcFXq70OOa9G9GOO', 'fotoprofilo2.PNG');
+
 INSERT INTO `post` (`idpost`, `testo`, `immagine`, `autore`, `data`) VALUES
 (1, 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!', NULL, 1, '2023-01-24 15:30:27'),
 (2, 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!', 'mood.png', 1, '2023-01-23 23:14:11'),
