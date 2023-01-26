@@ -48,7 +48,7 @@ class DbHelper{
     }
 
     public function getPostSeriebyID($id){
-        $query = "SELECT u.username AS username, u.foto profilo AS foto, p.testo AS testo, p.immagine AS immagine, p.data AS data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.postid=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE idserietv = ?";
+        $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -57,7 +57,7 @@ class DbHelper{
     }
 
     public function getUserInfobyID($id){
-        $query = "SELECT username, foto profilo FROM utente WHERE idutente = ?";
+        $query = "SELECT username, `foto profilo` FROM utente WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();

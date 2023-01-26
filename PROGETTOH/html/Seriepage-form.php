@@ -28,15 +28,12 @@
             <div class="serie_title">
                 <h1> <?php echo $templateParams["serieInfo"]["nome"] ?> </h1>
             </div>
-
             <div class="image_container">
                 <img id="center_image" src="<?php echo IMG_DIR.$templateParams["serieInfo"]["immagine"]?>" alt="immagine Serie">    
             </div>
-    
             <div class="serie_description">
                 <p> <?php echo $templateParams["serieInfo"]["trama"] ?> </p>
             </div>    
-    
         </div>
 
         <main>
@@ -44,96 +41,38 @@
                 <article class="main_article">
                     <header>
                         <div class="profile_info">
-                            <img src="<?php echo IMG_DIR.$templateParams["serieInfo"]["foto"]?>" alt="Profile_Picture" >
-                            <p class="user_name"> <?php echo $templateParams["serieInfo"]["username"]?> </p>
-                            <p class="timestamp"> <?php echo $templateParams["serieInfo"]["data"]?> </p>
+                            <img src="<?php echo IMG_DIR.$post["foto profilo"]?>" alt="Profile_Picture" >
+                            <p class="user_name"> <?php echo $post["username"]?> </p>
+                            <p class="timestamp"> <?php echo $post["data"]?> </p>
                         </div>
                     </header>
                     <section class="comment">
-                        <div>
-                            <img src="<?php echo IMG_DIR.$templateParams["serieInfo"]["immagine"]?>" alt="Comment_Picture">
-                        </div>
-                        <p>
-                            <?php echo $templateParams["serieInfo"]["testo"]?>
-                        </p>    
+                        <?php if(isset($post["immagine"])): ?>
+                            <div>
+                                <img src="<?php echo IMG_DIR.$post["immagine"]?>" alt="Comment_Picture">
+                            </div>
+                        <?php endif; ?>
+                        <?php if(isset($post["testo"])): ?>
+                            <p>
+                                <?php echo $post["testo"]?>
+                            </p>    
+                        <?php endif; ?>
                     </section>
                 </article>   
             <?php endforeach ?>
-
-            <article class="main_article">
-                <header>
-                    <div class="profile_info">
-                        <img src="../img/ProfilePic.png" alt="Profile_Picture" >
-                        <p class="user_name"> Profile Name </p>
-                        <p class="timestamp"> 12:00 </p>
-                    </div>
-                </header>
-                <section class="comment">
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!
-                    </p>    
-                </section>
-            </article>   
-
-            <article class="main_article">
-                <header>
-                    <div class="profile_info">
-                        <img src="../img/fotoprofilo1.PNG" alt="Profile_Picture" >
-                        <p class="user_name"> Profile Name </p>
-                        <p class="timestamp"> 12:00 </p>
-                    </div>
-                </header>
-                <section class="comment">
-                    <div>
-                        <img src="../img/PogAinsley.jpg" alt="Comment_Picture">
-                    </div>
-                </section>
-            </article>    
-
-            <article class="main_article">
-                <header>
-                    <div class="profile_info">
-                        <img src="../img/fotoprofilo2.PNG" alt="Profile_Picture" >
-                        <p class="user_name"> Profile Name </p>
-                        <p class="timestamp"> 12:00 </p>
-                    </div>
-                </header>
-                <section class="comment">
-                    <div>
-                        <img src="../img/PogAinsley.jpg" alt="Comment_Picture">
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!
-                    </p>
-                </section>
-            </article>    
-
-            <article class="main_article">
-                <header>
-                    <div class="profile_info">
-                        <img src="../img/fotoprofilo3.PNG" alt="Profile_Picture" >
-                        <p class="user_name"> Profile Name </p>
-                        <p class="timestamp"> 12:00 </p>
-                    </div>
-                </header>
-                <section class="comment">
-                    <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut tenetur quos nostrum, nisi doloribus maiores eum delectus dolorum corrupti facilis qui iste ea minima, vero libero quia accusantium numquam placeat!
-                    </p>
-                </section>
-            </article>    
-
         </main>
 
         <footer>
             <div class="text_bar">
-                <i class="fas fa-plus"></i>                
-                <div class="input_container">
-                    <input type="text" id="text_b">
-                </div>
-                <div class="button_textbox">
-                    <button><i class="fas fa-arrow-right"></i></button>
-                </div>
+                <form action="#" method="POST">
+                    <i class="fas fa-plus"></i>                
+                    <div class="input_container">
+                        <input type="text" id="text_b">
+                    </div>
+                    <div class="button_textbox">
+                        <button><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </form>
             </div>
         </footer>
 

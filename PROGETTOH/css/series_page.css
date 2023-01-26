@@ -203,7 +203,7 @@ footer{
     align-items: center;
 }
 
-div.text_bar{
+div.text_bar > form{
     display: flex;
     height: 6%;
     width: 100%;
@@ -216,7 +216,7 @@ div.text_bar{
     border-radius: 2px;
 }
 
-div.text_bar > i {
+div.text_bar > form > i {
     max-width: 30px;
     max-height: 30px;
     padding: .75%;
@@ -225,29 +225,34 @@ div.text_bar > i {
     margin: 0px 10px;
 }
 
-div.text_bar > div.input_container{
+div.text_bar > form > div.input_container{
     display: inline-block;
     width: 90%;
 }
 
-div.text_bar > div > input {
+div.text_bar > form > div > input {
     resize: both;
     width: 100%;
     border-radius: 7px;
     padding: 5px;
 }
 
-div.text_bar > div.button_textbox {
+div.text_bar > form > div.button_textbox {
     padding-left: 2%;
     padding-right: 1%;
 }
 
-div.text_bar > div.button_textbox > button {
+div.text_bar > form > div.button_textbox > button {
     padding: 10px;
     border-radius: 50px;
 }
 
-div.text_bar > div.button_textbox > button:hover {
+div.text_bar > form > div.button_textbox > button:hover {
+    background-color: #3f7fda;
+    transition: 0.35s;
+}
+
+div.text_bar > form > i:hover{
     background-color: #3f7fda;
     transition: 0.35s;
 }
