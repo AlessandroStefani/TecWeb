@@ -7,7 +7,7 @@ if(isset($_POST["email"]) && isset($_POST["psw"])) {
         $templateParams["errorelogin"] = "E-mail o password errata";
     }
     else{
-        header("location: ../html/home.html");
+        header("location: ../php/home-page.php");
     }
 }
 
