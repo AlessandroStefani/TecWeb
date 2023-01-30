@@ -46,10 +46,11 @@ header > nav {
 }
 
 .img-container {
-    overflow: auto;
+    overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overflow-y: hidden;
 }
 
 .scroller a:hover {

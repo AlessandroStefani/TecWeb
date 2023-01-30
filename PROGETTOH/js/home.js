@@ -1,31 +1,32 @@
-const slider = document.querySelector('.img-container');
+const slider = document.getElementsByClassName('img-container');
 
 let isDown = false;
 let startX;
 let scrollLeft;
 
-slider.addEventListener('mousedown', (e) => {
-  isDown = true;
-  slider.classList.add('active');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
-});
-
-slider.addEventListener('mouseleave', () => {
-  isDown = false;
-  slider.classList.remove('active');
-});
-
-slider.addEventListener('mousemove', (e) => {
-  if(!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
-  const walk = (x - startX) * 3;
-  slider.scrollLeft = scrollLeft - walk;
-  console.log(walk);
-});
-
-slider.addEventListener('mouseup', () => {
-  isDown = false;
-  slider.classList.remove('active');
-});
+for (let i = 0; i < slider.length; i++) {
+  slider[i].addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider[i].classList.add('active');
+    startX = e.pageX - slider[i].offsetLeft;
+    scrollLeft = slider[i].scrollLeft;
+  });
+  
+  slider[i].addEventListener('mouseleave', () => {
+    isDown = false;
+    slider[i].classList.remove('active');
+  });
+  
+  slider[i].addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider[i].offsetLeft;
+    const walk = (x - startX) * 3;
+    slider[i].scrollLeft = scrollLeft - walk;
+  });
+  
+  slider[i].addEventListener('mouseup', () => {
+    isDown = false;
+    slider[i].classList.remove('active');
+  });
+}

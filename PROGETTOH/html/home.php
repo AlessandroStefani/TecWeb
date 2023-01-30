@@ -41,18 +41,26 @@
         <div class="scroller" id="serieTv">
             <h2>Serie Tv</h2>
             <section class="img-container">
-                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
-                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
-                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
-                <a href="#"><div id="add-content"></div></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg">
+                    <p class="serie-title">Titolo Serie</p>               
+                    <span class="notification-badge">5</span>
+                </a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
+                <a href="../html/content-page.html"><div id="add-content"></div></a>
             </section>
         </div>
 
         <div class="scroller" id="anime">
             <h2>Anime</h2>
             <section class="img-container">
-                <a href="#"><img src="../img/red-black-pattern.jpg"></a>
-                <a href="#"><div id="add-content"></div></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
+                <a href="#"><img src="../img/red-black-pattern.jpg">
+                    <p class="serie-title">Titolo Serie</p>               
+                    <span class="notification-badge">5</span>
+                </a>
+                <a href="../html/content-page.html"><div id="add-content"></div></a>
             </section>
         </div>
     </main>
