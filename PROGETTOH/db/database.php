@@ -38,7 +38,7 @@ class DbHelper{
     }
 
     public function getFollowedContent($idutente){
-        $query = "SELECT * FROM content_seguito WHERE idutente = ?";
+        $query = "SELECT idfilm, idserietv, idanime, notifiche FROM content_seguito WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $idutente);
         $stmt->execute();
