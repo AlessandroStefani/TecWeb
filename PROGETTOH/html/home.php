@@ -22,45 +22,57 @@
         <div class="scroller" id="film">
             <h2>Film</h2>
             <section class="img-container">
+
+                <?php foreach($templateParams["info-film-seguiti"] as $infofilm): ?>
                 <a href="#">
-                    <img src="../img/red-black-pattern.jpg">
-                    <p class="serie-title">Titolo Serie</p>                     
+                    <img src="<?php echo IMG_DIR.$infofilm["immagine"]?>" alt="immagine-link <?php echo $infofilm["nome"]?>">
+                    <p class="content-title"><?php echo $infofilm["nome"]?></p>                     
                     <span class="notification-badge">5</span>
                 </a>
-                <a href="#"><img src="../img/red-black-pattern.jpg">
-                    <p class="serie-title">Titolo Serie</p>               
-                    <span class="notification-badge">5</span>
+                <?php endforeach ?>
+                
+                <a href="../html/content-page.html">
+                    <img id="add-content">
+                    <p class="content-title">Aggiungi Film</p>
                 </a>
-                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
-                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
-                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
-                <a href="../html/content-page.html"><div id="add-content"></div></a>
             </section>
         </div>
 
         <div class="scroller" id="serieTv">
             <h2>Serie Tv</h2>
             <section class="img-container">
-                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
-                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
-                <a href="#"><img src="../img/red-black-pattern.jpg">
-                    <p class="serie-title">Titolo Serie</p>               
+
+                <?php foreach($templateParams["info-serietv-seguite"] as $infoserietv): ?>
+                <a href="#">
+                    <img src="<?php echo IMG_DIR.$infoserietv["immagine"]?>" alt="immagine-link <?php echo $infoserietv["nome"]?>">
+                    <p class="content-title"><?php echo $infoserietv["nome"]?></p>                     
                     <span class="notification-badge">5</span>
                 </a>
-                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
-                <a href="../html/content-page.html"><div id="add-content"></div></a>
+                <?php endforeach ?>
+
+                <a href="../html/content-page.html">
+                    <img id="add-content">
+                    <p class="content-title">Aggiungi SerieTv</p>
+                </a>
             </section>
         </div>
 
         <div class="scroller" id="anime">
             <h2>Anime</h2>
             <section class="img-container">
-                <a href="#"><img src="../img/red-black-pattern.jpg"><p class="serie-title">Titolo Serie</p></a>
-                <a href="#"><img src="../img/red-black-pattern.jpg">
-                    <p class="serie-title">Titolo Serie</p>               
+
+                <?php foreach($templateParams["info-anime-seguiti"] as $infoanime): ?>
+                <a href="#">
+                    <img src="<?php echo IMG_DIR.$infoanime["immagine"]?>" alt="immagine-link <?php echo $infoanime["nome"]?>">
+                    <p class="content-title"><?php echo $infoanime["nome"]?></p>                     
                     <span class="notification-badge">5</span>
                 </a>
-                <a href="../html/content-page.html"><div id="add-content"></div></a>
+                <?php endforeach ?>
+
+                <a href="../html/content-page.html">
+                    <img id="add-content">
+                    <p class="content-title">Aggiungi Anime</p>
+                </a>
             </section>
         </div>
     </main>

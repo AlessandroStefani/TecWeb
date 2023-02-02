@@ -8,7 +8,7 @@ body {
 }
 
 header > nav {
-    background-color: rgb(60, 60, 60);
+    background-color: rgb(145, 0, 0);
     color: white;
     text-align: center;
     padding: 2% 0;
@@ -31,12 +31,14 @@ header > nav {
 .watchtime {
     text-align: center;
     width: 100%;
-    background-color: grey;
+    background-color: rgb(71, 0, 0);
 }
 
 .scroller {
     text-align: center;
     border-top: solid;
+    border-color: white;
+    background-color: black;
 }
 
 .scroller > h2 {
@@ -46,6 +48,7 @@ header > nav {
 }
 
 .img-container {
+    padding-top: 10px;
     overflow-x: auto;
     white-space: nowrap;
     scrollbar-width: none;
@@ -70,18 +73,21 @@ header > nav {
     text-decoration: none;
 }
 
-#add-content {
+.img-container img {
     background-color: gray;
-    margin: 10px 20px;
-    display: inline-block;
     height: 400px;
-    width: 275px;
+    width: 100%;
 }
 
-.serie-title {
-    color: black;
-    font-weight: bold;
-    font-size: 18px;
+#add-content {
+    width: 275px;
+    height: 400px;
+}
+
+.content-title {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 20px;
 }
 
 .notification-badge {

@@ -37,6 +37,33 @@ class DbHelper{
         return true;
     }
 
+    public function getFilmInfoByID($id){
+        $query = "SELECT * FROM film WHERE idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function getSerieTvInfoByID($id){
+        $query = "SELECT * FROM serietv WHERE idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function getAnimeInfoByID($id){
+        $query = "SELECT * FROM anime WHERE idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
     public function getFollowedContent($idutente){
         $query = "SELECT idfilm, idserietv, idanime, notifiche FROM content_seguito WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
