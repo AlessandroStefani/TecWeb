@@ -15,8 +15,8 @@
     </header>
     <main>
         <section class="watchtime">
-            <p>qui ci va il tempo totale</p>
-            <p>e qui il numero di episodi e film visti</p>
+            <p><?php echo($templateParams["tempo-totale"]) ?> minuti</p>
+            <p><?php echo($templateParams["episodi-totali"]) ?> episodi</p>
         </section>
 
         <div class="scroller" id="film">
@@ -26,8 +26,10 @@
                 <?php foreach($templateParams["info-film-seguiti"] as $infofilm): ?>
                 <a href="#">
                     <img src="<?php echo IMG_DIR.$infofilm["immagine"]?>" alt="immagine-link <?php echo $infofilm["nome"]?>">
-                    <p class="content-title"><?php echo $infofilm["nome"]?></p>                     
-                    <span class="notification-badge">5</span>
+                    <p class="content-title"><?php echo $infofilm["nome"]?></p>
+                    <?php if($infofilm["notifiche"]): ?>             
+                        <span class="notification-badge"> 5 </span>
+                    <?php endif; ?>
                 </a>
                 <?php endforeach ?>
                 
@@ -46,7 +48,9 @@
                 <a href="#">
                     <img src="<?php echo IMG_DIR.$infoserietv["immagine"]?>" alt="immagine-link <?php echo $infoserietv["nome"]?>">
                     <p class="content-title"><?php echo $infoserietv["nome"]?></p>                     
-                    <span class="notification-badge">5</span>
+                    <?php if($infoserietv["notifiche"]): ?>             
+                        <span class="notification-badge"> 5 </span>
+                    <?php endif; ?>
                 </a>
                 <?php endforeach ?>
 
@@ -65,7 +69,9 @@
                 <a href="#">
                     <img src="<?php echo IMG_DIR.$infoanime["immagine"]?>" alt="immagine-link <?php echo $infoanime["nome"]?>">
                     <p class="content-title"><?php echo $infoanime["nome"]?></p>                     
-                    <span class="notification-badge">5</span>
+                    <?php if($infoanime["notifiche"]): ?>             
+                        <span class="notification-badge"> 5 </span>
+                    <?php endif; ?>
                 </a>
                 <?php endforeach ?>
 

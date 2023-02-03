@@ -36,12 +36,12 @@ header > nav {
 
 .scroller {
     text-align: center;
-    border-top: solid;
     border-color: white;
     background-color: black;
 }
 
 .scroller > h2 {
+    margin-top: 0;
     background-color: wheat;
     display: block;
     text-align: center;

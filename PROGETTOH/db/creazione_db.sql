@@ -83,7 +83,10 @@ CREATE TABLE IF NOT EXISTS `progweb`.`content_seguito` (
     FOREIGN KEY (`idutente`) REFERENCES `progweb`.`utente` (idutente),
     FOREIGN KEY (`idfilm`) REFERENCES `progweb`.`film` (idfilm),
     FOREIGN KEY (`idserietv`) REFERENCES `progweb`.`serietv` (idserietv),
-    FOREIGN KEY (`idanime`) REFERENCES `progweb`.`anime` (idanime)
+    FOREIGN KEY (`idanime`) REFERENCES `progweb`.`anime` (idanime),
+    UNIQUE(`idfilm`),
+    UNIQUE(`idserietv`),
+    UNIQUE(`idanime`)
 )
 ENGINE = InnoDB;
 

@@ -4,6 +4,8 @@ require_once '../php/bootstrap.php';
 $templateParams["info-film-seguiti"] = array();
 $templateParams["info-serietv-seguite"] = array();
 $templateParams["info-anime-seguiti"] = array();
+$templateParams["tempo-totale"] = 0;
+$templateParams["episodi-totali"] = 0;
 
 $tabellaContenutiSeguiti = $dbh->getFollowedContent($_SESSION["idutente"]);
 $filmSeguiti = array();
@@ -12,25 +14,33 @@ $animeSeguiti = array();
 
 foreach ($tabellaContenutiSeguiti as $contenuto) {
     if ($contenuto["idfilm"] != NULL) {
-        $filmSeguiti[] = $contenuto["idfilm"];
+        $filmSeguiti[] = ["idfilm" => $contenuto["idfilm"], "notifiche" => $contenuto["notifiche"]];
     } else if ($contenuto["idserietv"] != NULL) {
-        $serieTvSeguite[] = $contenuto["idserietv"];
+        $serieTvSeguite[] = ["idserietv" => $contenuto["idserietv"], "notifiche" => $contenuto["notifiche"]];
     } else if ($contenuto["idanime"] != NULL) {
-        $animeSeguiti[] = $contenuto["idanime"];
+        $animeSeguiti[] = ["idanime" => $contenuto["idanime"], "notifiche" => $contenuto["notifiche"]];
     }
 }
 
-foreach ($filmSeguiti as $idfilm) {
-    $templateParams["info-film-seguiti"][] = $dbh->getFilmInfoByID($idfilm)[0];
+foreach ($filmSeguiti as $film) {
+    $templateParams["info-film-seguiti"][] = $dbh->getFilmInfoByID($film["idfilm"])[0] + ["notifiche" => $film["notifiche"]];
+    $templateParams["episodi-totali"] += 1;
+    $templateParams["tempo-totale"] += end($templateParams["info-film-seguiti"])["durata"];
+}
+ 
+foreach ($serieTvSeguite as $serieTv) {
+    $templateParams["info-serietv-seguite"][] = $dbh->getSerieTvInfoByID($serieTv["idserietv"])[0] + ["notifiche" => $serieTv["notifiche"]];
+    $templateParams["episodi-totali"] += end($templateParams["info-serietv-seguite"])["episodi"];
+    $templateParams["tempo-totale"] += end($templateParams["info-serietv-seguite"])["durata episodi"] * end($templateParams["info-serietv-seguite"])["episodi"];
 }
 
-foreach ($serieTvSeguite as $idserietv) {
-    $templateParams["info-serietv-seguite"][] = $dbh->getSerieTvInfoByID($idserietv)[0];
+foreach ($animeSeguiti as $anime) {
+    $templateParams["info-anime-seguiti"][] = $dbh->getAnimeInfoByID($anime["idanime"])[0] + ["notifiche" => $anime["notifiche"]];
+    $templateParams["episodi-totali"] += end($templateParams["info-anime-seguiti"])["episodi"];
+    $templateParams["tempo-totale"] += end($templateParams["info-anime-seguiti"])["durata episodi"] * end($templateParams["info-anime-seguiti"])["episodi"];
 }
 
-foreach ($animeSeguiti as $idanime) {
-    $templateParams["info-anime-seguiti"][] = $dbh->getAnimeInfoByID($idanime)[0];
-}
+
 
 require '../html/home.php';
 ?>
