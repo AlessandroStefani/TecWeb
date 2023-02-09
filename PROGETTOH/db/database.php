@@ -45,7 +45,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
     public function getSerieTvInfoByID($id){
         $query = "SELECT * FROM serietv WHERE idserietv = ?";
         $stmt = $this->db->prepare($query);
@@ -54,9 +54,27 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
     public function getAnimeInfoByID($id){
         $query = "SELECT * FROM anime WHERE idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    
+    public function getPostSeriebyID($id){
+        $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    
+    public function getUserInfobyID($id){
+        $query = "SELECT username, `foto profilo` FROM utente WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
