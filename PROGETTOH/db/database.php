@@ -37,8 +37,16 @@ class DbHelper{
         return true;
     }
 
-
-    public function getSerieInfoByID($id){
+    public function getFilmInfoByID($id){
+        $query = "SELECT * FROM film WHERE idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    
+    public function getSerieTvInfoByID($id){
         $query = "SELECT * FROM serietv WHERE idserietv = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
@@ -46,7 +54,16 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
+    public function getAnimeInfoByID($id){
+        $query = "SELECT * FROM anime WHERE idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    
     public function getPostSeriebyID($id){
         $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ?";
         $stmt = $this->db->prepare($query);
@@ -55,7 +72,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
     public function getUserInfobyID($id){
         $query = "SELECT username, `foto profilo` FROM utente WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
@@ -65,6 +82,66 @@ class DbHelper{
         return $result;
     }
 
+    public function getFollowedContent($idutente){
+        $query = "SELECT idfilm, idserietv, idanime, notifiche FROM content_seguito WHERE idutente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $idutente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function addFollowedFilm($idutente, $idfilm){
+        $query = "INSERT INTO content_seguito (idutente, idfilm) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idfilm);
+
+        return $stmt->execute();
+    }
+
+    public function addFollowedSerieTv($idserietv){
+        $query = "INSERT INTO content_seguito (idutente, idserietv) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idserietv);
+
+        return $stmt->execute();        
+    }
+
+    public function addFollowedAnime($idanime){
+        $query = "INSERT INTO content_seguito (idutente, idanime) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idanime);
+
+        return $stmt->execute();        
+    }
+
+    public function getAllAnime(){
+        $query = "SELECT * FROM anime";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllFilm(){
+        $query = "SELECT * FROM film";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllserietv(){
+        $query = "SELECT * FROM serietv";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
