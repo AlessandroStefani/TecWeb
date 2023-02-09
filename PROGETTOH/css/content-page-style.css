@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+.nav-di-giovava {
+    background-color: rgb(60, 60, 60);
+    color: white;
+    text-align: center;
+    padding: 2% 0;
+    width: 100%;
+    /*perchè non funzia?*/
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
