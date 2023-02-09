@@ -8,7 +8,7 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <nav>      
+        <nav>
             <div class="nav_bar">
                 <img src="../img/site_logo.PNG" alt="logo">
                 <a href="#"><i class="fas fa-qrcode"></i> Home</a>
