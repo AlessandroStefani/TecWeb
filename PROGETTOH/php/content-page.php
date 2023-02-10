@@ -1,9 +1,9 @@
 <?php
 require_once '../php/bootstrap.php';
 
-$templateparams["all film"] = $dbh->getAllFilm();
-$templateparams["all serietv"] = $dbh->getAllserietv();
-$templateparams["all anime"] = $dbh->getAllAnime();
+$templateParams["all-film"] = $dbh->getAllFilm();
+$templateParams["all-serietv"] = $dbh->getAllserietv();
+$templateParams["all-anime"] = $dbh->getAllAnime();
 
-require '../html/content-page.html';
+require '../html/content.php';
 ?>

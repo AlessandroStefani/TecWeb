@@ -5,18 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="../css/home-style.css" />
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
     <header>
         <nav class="nav-di-giovava">
-            <div class="nav_bar">
-                <img src="../img/site_logo.PNG" alt="logo">
-                <a href="../php/home-page.php"><i class="fas fa-qrcode"></i> Home</a>
-                <a href="../php/profile-page.php"><i class="fas fa-user"></i>Profilo</a>
-                <a href="../php/content-page.php"><i class="fas fa-search"></i>Esplora</a>
-            </div>
         </nav>
     </header>
     <main>
@@ -30,7 +23,7 @@
             <section class="img-container">
 
                 <?php foreach($templateParams["info-film-seguiti"] as $infofilm): ?>
-                <a href="../php/serie_page.php?tipo=film?id=<?php echo($infofilm["idfilm"])?>">
+                <a href="../php/serie_page.php?tipo=film?id=<?php echo($infofilm["idfilm"])?>?notifiche=<?php echo($infofilm["notifiche"])?>">
                     <img src="<?php echo IMG_DIR.$infofilm["immagine"]?>" alt="immagine-link <?php echo $infofilm["nome"]?>">
                     <p class="content-title"><?php echo $infofilm["nome"]?></p>
                     <?php if($infofilm["notifiche"]): ?>             
@@ -51,7 +44,7 @@
             <section class="img-container">
 
                 <?php foreach($templateParams["info-serietv-seguite"] as $infoserietv): ?>
-                <a href="../php/serie_page.php?tipo=serietv?id=<?php echo($infoserietv["idserietv"])?>">
+                <a href="../php/serie_page.php?tipo=serietv?id=<?php echo($infoserietv["idserietv"])?>?notifiche=<?php echo($infoserietv["notifiche"])?>">
                     <img src="<?php echo IMG_DIR.$infoserietv["immagine"]?>" alt="immagine-link <?php echo $infoserietv["nome"]?>">
                     <p class="content-title"><?php echo $infoserietv["nome"]?></p>                     
                     <?php if($infoserietv["notifiche"]): ?>             
@@ -72,7 +65,7 @@
             <section class="img-container">
 
                 <?php foreach($templateParams["info-anime-seguiti"] as $infoanime): ?>
-                <a href="../php/serie_page.php?tipo=anime?id=<?php echo($infoanime["idanime"])?>">
+                <a href="../php/serie_page.php?tipo=anime?id=<?php echo($infoanime["idanime"])?>?notifiche=<?php echo($infoanime["notifiche"])?>">
                     <img src="<?php echo IMG_DIR.$infoanime["immagine"]?>" alt="immagine-link <?php echo $infoanime["nome"]?>">
                     <p class="content-title"><?php echo $infoanime["nome"]?></p>                     
                     <?php if($infoanime["notifiche"]): ?>             
@@ -89,5 +82,7 @@
         </div>
     </main>
 </body>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script src="../js/home.js" type="text/javascript"></script>
+<script src="../js/nav-di-giovava.js" type="text/javascript"></script>
 </html>
