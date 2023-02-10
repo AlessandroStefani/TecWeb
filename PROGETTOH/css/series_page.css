@@ -112,7 +112,7 @@ div.notification_check{
     text-align: right;
 
 }
-div.notification_check > label{
+div.notification_check > form > label{
     font-size: 20px;
 }
 
@@ -235,6 +235,7 @@ div.text_bar > form > div > input {
     width: 100%;
     border-radius: 7px;
     padding: 5px;
+    margin-right: 10px;
 }
 
 div.text_bar > form > div.button_textbox {
@@ -247,12 +248,19 @@ div.text_bar > form > div.button_textbox > button {
     border-radius: 50px;
 }
 
-div.text_bar > form > div.button_textbox > button:hover {
-    background-color: #3f7fda;
-    transition: 0.35s;
+div.text_bar > form > input {
+    margin: 19px;
+    border-radius: 3px;
 }
 
-div.text_bar > form > i:hover{
+div.text_bar > form > label > i {
+    margin: 19px;
+    border-radius: 3px;
+    border: 2px black solid;
+    padding: 3px;
+}
+
+div.text_bar > form > label > i:hover{
     background-color: #3f7fda;
     transition: 0.35s;
 }

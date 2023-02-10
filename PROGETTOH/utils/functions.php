@@ -10,6 +10,23 @@ function registerLoggedUser($user){
     $_SESSION["email"] = $user["email"];
 }
 
+function getAction($action){
+    $result = "";
+    switch($action){
+        case 1:
+            $result = "Inserisci";
+            break;
+        case 2:
+            $result = "Modifica";
+            break;
+        case 3:
+            $result = "Cancella";
+            break;
+    }
+
+    return $result;
+}
+
 function uploadImage($path, $image){
     $imageName = basename($image["name"]);
     $fullPath = $path.$imageName;
