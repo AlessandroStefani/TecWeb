@@ -8,7 +8,7 @@ body {
 }
 
 header > nav {
-    background-color: rgb(145, 0, 0);
+    background-color: rgb(60, 60, 60);
     color: white;
     text-align: center;
     padding: 2% 0;
@@ -19,7 +19,7 @@ header > nav {
     top: 0;
 }
 
-.watchtime > p {
+main > div > p {
     display: inline-block;
     background-color: black;
     color:wheat;
@@ -28,74 +28,23 @@ header > nav {
     width: 30%;
 }
 
-.watchtime {
+main > div {
     text-align: center;
     width: 100%;
-    background-color: rgb(71, 0, 0);
+    background-color: grey;
 }
 
-.scroller {
+main > nav {
     text-align: center;
-    border-color: white;
-    background-color: black;
+    border-style: solid;
 }
 
-.scroller > h2 {
-    margin-top: 0;
+main > nav > h2 {
     background-color: wheat;
     display: block;
     text-align: center;
 }
 
-.img-container {
-    padding-top: 10px;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    overflow-y: hidden;
-}
-
-.scroller a:hover {
-    transform: scale(1.02);
-    transition: 0.3s;
-} 
-
-.img-container::-webkit-scrollbar {
-    display: none;
-}
-
-.img-container a {
-    position: relative;
-    padding: 10px 20px;
+main > nav > a {
     display: inline-block;
-    text-align: center;
-    text-decoration: none;
-}
-
-.img-container img {
-    background-color: gray;
-    height: 400px;
-    width: 100%;
-}
-
-#add-content {
-    width: 275px;
-    height: 400px;
-}
-
-.content-title {
-    font-family: 'Times New Roman', Times, serif;
-    color: white;
-    font-size: 20px;
-}
-
-.notification-badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 5px 10px;
-    border-radius: 50%;
-    background: green;
-    color: white;
 }
