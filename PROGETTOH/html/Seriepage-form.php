@@ -19,8 +19,10 @@
 
         <aside class="right_aside">
             <div class="notification_check">
-                <input type="checkbox" id="notif">
-                <label for="notif">Ricevi Notifiche</label>
+                <form action="" method="POST">
+                    <input type="checkbox" name="notif" id="notif" onchange="this.form.submit()">
+                    <label for="notif">Ricevi Notifiche: <?php echo $_SESSION["notifiche"] ?></label>
+                </form>
             </div>
         </aside>
 
@@ -64,14 +66,13 @@
 
         <footer>
             <div class="text_bar">
-                <form action="#" method="POST">
-                    <i class="fas fa-plus"></i>                
+                <form action="../php/serie_page.php" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;">
+                    <label for="fileToUpload"><i class="fas fa-plus"></i></label>
                     <div class="input_container">
-                        <input type="text" id="text_b">
+                        <input type="text" name="postText" id="postText">
                     </div>
-                    <div class="button_textbox">
-                        <button><i class="fas fa-arrow-right"></i></button>
-                    </div>
+                    <input type="submit" value="Invia" name="submit">
                 </form>
             </div>
         </footer>

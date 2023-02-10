@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `progweb`.`utente` (
     `username` VARCHAR(128) NOT NULL,
     `email` VARCHAR(128) NOT NULL,
     `password` VARCHAR(512) NOT NULL,
-    `foto profilo` VARCHAR(128) DEFAULT "anone.png",
+    `foto profilo` VARCHAR(128),
     PRIMARY KEY (`idutente`),
     UNIQUE(`email`)
 )
