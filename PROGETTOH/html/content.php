@@ -19,25 +19,44 @@
 
         <div id="Film" class="tabcontent">
             <?php foreach($templateParams["all-film"] as $film): ?>
-                <div class="info-film">
+                <div class="info-contenuto">
                     <b class="titolo"><?php echo($film["nome"])?></b>
                     <img src="<?php echo(IMG_DIR.$film["immagine"])?>" alt="locandina di <?php echo($film["nome"])?>" class="locandina">
                     <p class="trama"><?php echo($film["trama"])?></p>
-                    <p class="durata">Durata: <?php echo($film["durata"])?> minuti</p>
+                    <div class="watch-info">
+                        <p class="durata">Durata: <?php echo($film["durata"])?> minuti</p>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
 
         <div id="SerieTv" class="tabcontent">
             <?php foreach($templateParams["all-serietv"] as $serietv): ?>
-                <p>CIAO</p>
-                
+                <div class="info-contenuto">
+                    <b class="titolo"><?php echo($serietv["nome"])?></b>
+                    <img src="<?php echo(IMG_DIR.$serietv["immagine"])?>" alt="locandina di <?php echo($serietv["nome"])?>" class="locandina">
+                    <p class="trama"><?php echo($serietv["trama"])?></p>
+                    <div class="watch-info">
+                        <p class="stagioni">Stagioni: <?php echo($serietv["stagioni"])?></p>
+                        <p class="episodi">Episodi Totali: <?php echo($serietv["episodi"])?></p>
+                        <p class="durata">Durata Episodio: <?php echo($serietv["durata episodi"])?> minuti</p>
+                    </div>
+                </div>                
             <?php endforeach; ?>
         </div>
 
         <div id="Anime" class="tabcontent">
             <?php foreach($templateParams["all-anime"] as $anime): ?>
-                <p>CIAO</p>
+                <div class="info-contenuto">
+                    <b class="titolo"><?php echo($anime["nome"])?></b>
+                    <img src="<?php echo(IMG_DIR.$anime["immagine"])?>" alt="locandina di <?php echo($anime["nome"])?>" class="locandina">
+                    <p class="trama"><?php echo($anime["trama"])?></p>
+                    <div class="watch-info">
+                        <p class="stagioni">Stagioni: <?php echo($anime["stagioni"])?></p>
+                        <p class="episodi">Episodi Totali: <?php echo($anime["episodi"])?></p>
+                        <p class="durata">Durata Episodio: <?php echo($anime["durata episodi"])?> minuti</p>
+                    </div>
+                </div>
             <?php endforeach; ?>
         </div>
 

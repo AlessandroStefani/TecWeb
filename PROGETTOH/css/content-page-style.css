@@ -1,18 +1,16 @@
+
 body {
     margin: 0;
     padding: 0;
 }
 
-/* Set height of body and the document to 100% to enable "full page tabs" */
 body,
 html {
-    height: 100%;
-    margin: 0;
     font-family: 'Times New Roman', Times, serif;
     background-color: black;
+    width: 100%;
 }
 
-/* Style tab links */
 .tablink {
     background-color: #555;
     color: white;
@@ -29,15 +27,45 @@ html {
     background-color: #777;
 }
 
-/* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
     color: white;
-    display: none;
-    padding: 100px 20px;
-    height: 100%;
+    padding: 100px 0px;
 }
 
-img {    
-    height: 400px;
+img {
+    max-height: 500px;
     width: auto;
+    max-width: 100%;
+}
+
+.info-contenuto {
+    text-align: center;
+}
+
+.info-contenuto .titolo {
+    display: inline-block;
+    font-size: 25px;
+    background-color: wheat;
+    width: 100%;
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.trama {
+    font-size: 17px;
+    text-align: center;
+    width: 100%;
+}
+
+.watch-info {
+    font-size: 17px;
+
+}
+
+@media screen and (min-width:768px) {
+    .trama {
+        width: 50%;
+        margin-left: 25%;
+    }
 }

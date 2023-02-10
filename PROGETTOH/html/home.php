@@ -23,7 +23,7 @@
             <section class="img-container">
 
                 <?php foreach($templateParams["info-film-seguiti"] as $infofilm): ?>
-                <a href="../php/serie_page.php?tipo=film?id=<?php echo($infofilm["idfilm"])?>?notifiche=<?php echo($infofilm["notifiche"])?>">
+                <a href="../php/serie_page.php?tipo=film&id=<?php echo($infofilm["idfilm"])?>&notifiche=<?php echo($infofilm["notifiche"])?>">
                     <img src="<?php echo IMG_DIR.$infofilm["immagine"]?>" alt="immagine-link <?php echo $infofilm["nome"]?>">
                     <p class="content-title"><?php echo $infofilm["nome"]?></p>
                     <?php if($infofilm["notifiche"]): ?>             
@@ -44,7 +44,7 @@
             <section class="img-container">
 
                 <?php foreach($templateParams["info-serietv-seguite"] as $infoserietv): ?>
-                <a href="../php/serie_page.php?tipo=serietv?id=<?php echo($infoserietv["idserietv"])?>?notifiche=<?php echo($infoserietv["notifiche"])?>">
+                <a href="../php/serie_page.php?tipo=serietv&id=<?php echo($infoserietv["idserietv"])?>&notifiche=<?php echo($infoserietv["notifiche"])?>">
                     <img src="<?php echo IMG_DIR.$infoserietv["immagine"]?>" alt="immagine-link <?php echo $infoserietv["nome"]?>">
                     <p class="content-title"><?php echo $infoserietv["nome"]?></p>                     
                     <?php if($infoserietv["notifiche"]): ?>             
@@ -65,7 +65,7 @@
             <section class="img-container">
 
                 <?php foreach($templateParams["info-anime-seguiti"] as $infoanime): ?>
-                <a href="../php/serie_page.php?tipo=anime?id=<?php echo($infoanime["idanime"])?>?notifiche=<?php echo($infoanime["notifiche"])?>">
+                <a href="../php/serie_page.php?tipo=anime&id=<?php echo($infoanime["idanime"])?>&notifiche=<?php echo($infoanime["notifiche"])?>">
                     <img src="<?php echo IMG_DIR.$infoanime["immagine"]?>" alt="immagine-link <?php echo $infoanime["nome"]?>">
                     <p class="content-title"><?php echo $infoanime["nome"]?></p>                     
                     <?php if($infoanime["notifiche"]): ?>             
