@@ -1,25 +1,10 @@
-* {
-    box-sizing: border-box;
-}
 
 body {
     margin: 0;
     padding: 0;
 }
 
-header > nav {
-    background-color: rgb(60, 60, 60);
-    color: white;
-    text-align: center;
-    padding: 2% 0;
-    width: 100%;
-    /*perchè non funzia?*/
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-
-main > div > p {
+.watchtime > p {
     display: inline-block;
     background-color: black;
     color:wheat;
@@ -28,23 +13,74 @@ main > div > p {
     width: 30%;
 }
 
-main > div {
+.watchtime {
     text-align: center;
     width: 100%;
-    background-color: grey;
+    background-color: rgb(145, 0, 0);
 }
 
-main > nav {
+.scroller {
     text-align: center;
-    border-style: solid;
+    border-color: white;
+    background-color: black;
 }
 
-main > nav > h2 {
+.scroller > h2 {
+    margin-top: 0;
     background-color: wheat;
     display: block;
     text-align: center;
 }
 
-main > nav > a {
+.img-container {
+    padding-top: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-y: hidden;
+}
+
+.scroller a:hover {
+    transform: scale(1.02);
+    transition: 0.3s;
+} 
+
+.img-container::-webkit-scrollbar {
+    display: none;
+}
+
+.img-container a {
+    position: relative;
+    padding: 10px 20px;
     display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.img-container img {
+    background-color: gray;
+    height: 400px;
+    width: 100%;
+}
+
+#add-content {
+    width: 275px;
+    height: 400px;
+}
+
+.content-title {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    font-size: 20px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: green;
+    color: white;
 }
