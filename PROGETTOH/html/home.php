@@ -32,7 +32,7 @@
                 </a>
                 <?php endforeach ?>
                 
-                <a href="../html/content-page.html">
+                <a href="../php/content-page.php?click=0">
                     <img id="add-content">
                     <p class="content-title">Aggiungi Film</p>
                 </a>
@@ -53,7 +53,7 @@
                 </a>
                 <?php endforeach ?>
 
-                <a href="../html/content-page.html">
+                <a href="../php/content-page.php?click=1">
                     <img id="add-content">
                     <p class="content-title">Aggiungi SerieTv</p>
                 </a>
@@ -74,7 +74,7 @@
                 </a>
                 <?php endforeach ?>
 
-                <a href="../html/content-page.html">
+                <a href="../php/content-page.php?click=2">
                     <img id="add-content">
                     <p class="content-title">Aggiungi Anime</p>
                 </a>

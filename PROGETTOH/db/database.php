@@ -91,7 +91,15 @@ class DbHelper{
         return $stmt->execute();
     }
 
-    public function addFollowedSerieTv($idserietv){
+    public function removeFollowedFilm($idutente, $idfilm){
+        $query = "DELETE FROM content_seguito WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idfilm);
+
+        return $stmt->execute();
+    }
+
+    public function addFollowedSerieTv($idutente, $idserietv){
         $query = "INSERT INTO content_seguito (idutente, idserietv) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $idutente, $idserietv);
@@ -99,12 +107,28 @@ class DbHelper{
         return $stmt->execute();        
     }
 
-    public function addFollowedAnime($idanime){
+    public function removeFollowedSerieTv($idutente, $idserietv){
+        $query = "DELETE FROM content_seguito WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idserietv);
+
+        return $stmt->execute();
+    }
+
+    public function addFollowedAnime($idutente, $idanime){
         $query = "INSERT INTO content_seguito (idutente, idanime) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $idutente, $idanime);
 
         return $stmt->execute();        
+    }
+
+    public function removeFollowedAnime($idutente, $idanime){
+        $query = "DELETE FROM content_seguito WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idanime);
+
+        return $stmt->execute();
     }
 
     public function getAllAnime(){

@@ -57,4 +57,8 @@ function uploadImage($path, $image){
     }
     return array($result, $msg);
 }
+
+function sayHi() {
+    echo "AAAAAAAAAAAAAAAAAAAACCCCIIIAAAAAAAAAAAAAOOOOOOOOOOOOOOO";
+}
 ?>

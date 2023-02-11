@@ -19,5 +19,26 @@ function openPage(pageName, elmnt, color) {
     elmnt.style.backgroundColor = color;
 }
 
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+
+function filmAction(idfilm, action) {
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "../utils/content-interactions.php?idfilm=" + idfilm + "&action=" + action);
+    xmlhttp.send();
+}
+
+function serieTvAction(idserietv, action) {
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "../utils/content-interactions.php?idserietv=" + idserietv + "&action=" + action);
+    xmlhttp.send();
+}
+
+function animeAction(idanime, action) {
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "../utils/content-interactions.php?idanime=" + idanime + "&action=" + action);
+    xmlhttp.send();
+}
+
+document.getElementById("0").click();
+if(document.URL.includes("?click=0")) document.getElementById("0").click();
+if(document.URL.includes("?click=1")) document.getElementById("1").click();
+if(document.URL.includes("?click=2")) document.getElementById("2").click();

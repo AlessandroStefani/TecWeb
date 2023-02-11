@@ -1,9 +1,9 @@
-
 body {
     margin: 0;
     padding: 0;
 }
 
+/* Set height of body and the document to 100% to enable "full page tabs" */
 body,
 html {
     font-family: 'Times New Roman', Times, serif;
@@ -11,6 +11,7 @@ html {
     width: 100%;
 }
 
+/* Style tab links */
 .tablink {
     background-color: #555;
     color: white;
@@ -27,12 +28,14 @@ html {
     background-color: #777;
 }
 
+/* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
     color: white;
     padding: 100px 0px;
 }
 
 img {
+    position: relative;
     max-height: 500px;
     width: auto;
     max-width: 100%;
@@ -61,6 +64,34 @@ img {
 .watch-info {
     font-size: 17px;
 
+}
+
+.aggiungi-alla-home {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.aggiungi-alla-home .overlay-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    opacity: 0;    
+    transition: .3s ease;
+}
+
+.aggiungi-alla-home:hover .overlay-btn {
+    opacity: 1;
 }
 
 @media screen and (min-width:768px) {
