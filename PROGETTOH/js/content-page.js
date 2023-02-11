@@ -38,6 +38,7 @@ function animeAction(idanime, action) {
     xmlhttp.send();
 }
 
+document.getElementById("0").click();
 if(document.URL.includes("?click=0")) document.getElementById("0").click();
 if(document.URL.includes("?click=1")) document.getElementById("1").click();
 if(document.URL.includes("?click=2")) document.getElementById("2").click();
