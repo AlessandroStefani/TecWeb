@@ -13,11 +13,11 @@
         </nav>
     </header>
     <main>
-        <button class="tablink" onclick="openPage('Film', this, 'red')" id="0">Film</button>
-        <button class="tablink" onclick="openPage('SerieTv', this, 'green')" id="1">Serie Tv</button>
-        <button class="tablink" onclick="openPage('Anime', this, 'blue')" id="2">Anime</button>
+        <button class="tablink" onclick="openPage('film', this, 'red')" id="0">Film</button>
+        <button class="tablink" onclick="openPage('serietv', this, 'green')" id="1">Serie Tv</button>
+        <button class="tablink" onclick="openPage('anime', this, 'blue')" id="2">Anime</button>
 
-        <div id="Film" class="tabcontent">
+        <div id="film" class="tabcontent">
             <?php foreach($templateParams["all-film"] as $film): ?>
                 <div class="info-contenuto">
                     <b class="titolo"><?php echo($film["nome"])?></b>
@@ -37,7 +37,7 @@
             <?php endforeach; ?>
         </div>
 
-        <div id="SerieTv" class="tabcontent">
+        <div id="serietv" class="tabcontent">
             <?php foreach($templateParams["all-serietv"] as $serietv): ?>
                 <div class="info-contenuto">
                     <b class="titolo"><?php echo($serietv["nome"])?></b>
@@ -59,7 +59,7 @@
             <?php endforeach; ?>
         </div>
 
-        <div id="Anime" class="tabcontent">
+        <div id="anime" class="tabcontent">
             <?php foreach($templateParams["all-anime"] as $anime): ?>
                 <div class="info-contenuto">
                     <b class="titolo"><?php echo($anime["nome"])?></b>
