@@ -30,9 +30,35 @@ function getInfoContent(){
   }
 }
 
-if(isset($_POST["notif"]) && filter_has_var(INPUT_POST, "notif")){
-  $templateParams["notifiche"] = !$templateParams["notifiche"];
-  // Fare una update nel db, nigga.
+if(isset($_POST['notif'])){
+  if($templateParams["notifiche"] == 0){
+    /*if($templateParams["tipo"] == "film"){
+      $dbh->addNotificaFilm($_SESSION["idutente"], $templateParams["idTipo"]);
+      $templateParams["notifiche"] = 1;
+    } else if($templateParams["tipo"] == "serietv"){
+      $dbh->addNotificaSerietv($_SESSION["idutente"], $templateParams["idTipo"]);
+      $templateParams["notifiche"] = 1;
+    } else if($templateParams["tipo"] == "anime"){
+      $dbh->addNotificaAnime($_SESSION["idutente"], $templateParams["idTipo"]);
+      $templateParams["notifiche"] = 1;
+    }*/
+    echo ("notifiche da aggiungere");
+  } else {
+    /*
+    if($templateParams["tipo"] == "film"){
+      $dbh->ChangeNotificaFilm($_SESSION["idutente"], $templateParams["idTipo"], 0);
+      $templateParams["notifiche"] = 0;
+    } else if($templateParams["tipo"] == "serietv"){
+      $dbh->ChangeNotificaSerietv($_SESSION["idutente"], $templateParams["idTipo"], 0);
+      $templateParams["notifiche"] = 0;
+    } else if($templateParams["tipo"] == "anime"){
+      $dbh->ChangeNotificaAnime($_SESSION["idutente"], $templateParams["idTipo"], 0);
+      $templateParams["notifiche"] = 0;
+    }*/
+    echo ("notifiche da rimuovere");
+  }
+} else {
+  echo "ciao";
 }
 
 if((isset($_FILES["fileToUpload"]) && ($_FILES["fileToUpload"]["size"])) && (isset($_POST["postText"]) && strlen($_POST["postText"]))) {

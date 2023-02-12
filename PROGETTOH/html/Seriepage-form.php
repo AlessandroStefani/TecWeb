@@ -5,6 +5,7 @@
         <title><?php echo $templateParams["serieInfo"]["nome"] ?></title>
         <link rel="stylesheet" type="text/css" href="../css/series_page.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="../js/serie-page-fun.js"></script>
         <meta charset="UTF-8"/>
     </head>
     <body>
@@ -20,7 +21,7 @@
         <aside class="right_aside">
             <div class="notification_check">
                 <form action="" method="POST">
-                    <input type="checkbox" name="notif" id="notif" onchange="this.form.submit()" <?php if($templateParams["notifiche"]){echo "checked";} ?>>
+                    <input type="checkbox" name="notif" id="notif" onchange="" <?php if($templateParams["notifiche"]){echo "checked";} ?>>
                     <label for="notif">Ricevi Notifiche</label>
                 </form>
             </div>
