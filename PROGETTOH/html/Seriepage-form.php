@@ -2,7 +2,7 @@
 <html lang="it" dir="ltr">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php echo $templateParams["titolo"] ?></title>
+        <title><?php echo $templateParams["serieInfo"]["nome"] ?></title>
         <link rel="stylesheet" type="text/css" href="../css/series_page.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <meta charset="UTF-8"/>
@@ -11,17 +11,17 @@
         <nav>
             <div class="nav_bar">
                 <img src="../img/site_logo.PNG" alt="logo">
-                <a href="#"><i class="fas fa-qrcode"></i> Home</a>
-                <a href="#"><i class="fas fa-user"></i>Profilo</a>
-                <a href="#"><i class="fas fa-search"></i>Esplora</a> <!--<i class="fas fa-tv">-->
+                <a href="../php/home-page.php"><i class="fas fa-qrcode"></i> Home</a>
+                <a href="../php/profile-page.php"><i class="fas fa-user"></i>Profilo</a>
+                <a href="../php/content-page.php"><i class="fas fa-search"></i>Esplora</a> <!--<i class="fas fa-tv">-->
             </div>
         </nav>
 
         <aside class="right_aside">
             <div class="notification_check">
                 <form action="" method="POST">
-                    <input type="checkbox" name="notif" id="notif" onchange="this.form.submit()">
-                    <label for="notif">Ricevi Notifiche: <?php echo $_SESSION["notifiche"] ?></label>
+                    <input type="checkbox" name="notif" id="notif" onchange="this.form.submit()" <?php if($templateParams["notifiche"]){echo "checked";} ?>>
+                    <label for="notif">Ricevi Notifiche</label>
                 </form>
             </div>
         </aside>
@@ -39,7 +39,7 @@
         </div>
 
         <main>
-            <?php foreach($templateParams["postSerie"] as $post): ?>
+            <?php foreach($templateParams["posts"] as $post): ?>
                 <article class="main_article">
                     <header>
                         <div class="profile_info">
@@ -66,7 +66,7 @@
 
         <footer>
             <div class="text_bar">
-                <form action="../php/serie_page.php" method="POST" enctype="multipart/form-data">
+                <form action="../php/serie_page.php<?php echo "?tipo=".$templateParams["tipo"]."&id=".$templateParams["idTipo"]."&notifiche=".$templateParams["notifiche"]?>" method="POST" enctype="multipart/form-data">
                     <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;">
                     <label for="fileToUpload"><i class="fas fa-plus"></i></label>
                     <div class="input_container">
