@@ -45,7 +45,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
     public function getSerieTvInfoByID($id){
         $query = "SELECT * FROM serietv WHERE idserietv = ?";
         $stmt = $this->db->prepare($query);
@@ -54,7 +54,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
     public function getAnimeInfoByID($id){
         $query = "SELECT * FROM anime WHERE idanime = ?";
         $stmt = $this->db->prepare($query);
@@ -63,6 +63,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
+    
     public function getUserInfobyID($id){
         $query = "SELECT idutente, email, username, `foto profilo` FROM utente WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
@@ -71,6 +72,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
+    
     public function getFollowedContent($idutente){
         $query = "SELECT idfilm, idserietv, idanime, notifiche FROM content_seguito WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
@@ -89,7 +91,15 @@ class DbHelper{
         return $stmt->execute();
     }
 
-    public function addFollowedSerieTv($idserietv){
+    public function removeFollowedFilm($idutente, $idfilm){
+        $query = "DELETE FROM content_seguito WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idfilm);
+
+        return $stmt->execute();
+    }
+
+    public function addFollowedSerieTv($idutente, $idserietv){
         $query = "INSERT INTO content_seguito (idutente, idserietv) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $idutente, $idserietv);
@@ -97,12 +107,28 @@ class DbHelper{
         return $stmt->execute();        
     }
 
-    public function addFollowedAnime($idanime){
+    public function removeFollowedSerieTv($idutente, $idserietv){
+        $query = "DELETE FROM content_seguito WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idserietv);
+
+        return $stmt->execute();
+    }
+
+    public function addFollowedAnime($idutente, $idanime){
         $query = "INSERT INTO content_seguito (idutente, idanime) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii', $idutente, $idanime);
 
         return $stmt->execute();        
+    }
+
+    public function removeFollowedAnime($idutente, $idanime){
+        $query = "DELETE FROM content_seguito WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idanime);
+
+        return $stmt->execute();
     }
 
     public function getAllAnime(){
@@ -131,6 +157,7 @@ class DbHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
     public function getPostSeriebyID($id){
         $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ?";
         $stmt = $this->db->prepare($query);
@@ -139,6 +166,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
+    
     public function getPostAnimebyID($id){
         $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN anime a ON ps.idanime = a.idanime) WHERE a.idanime = ?";
         $stmt = $this->db->prepare($query);
@@ -147,6 +175,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
+    
     public function getPostFilmbyID($id){
         $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN film f ON ps.idfilm = f.idfilm) WHERE f.idfilm = ?";
         $stmt = $this->db->prepare($query);
@@ -155,6 +184,7 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
+    
     public function insertPost($testoarticolo, $dataarticolo, $imgarticolo, $autore){
         $query = "INSERT INTO post (testo, immagine, autore, data) VALUES ( ?, ?, ?, ? )";
         $stmt = $this->db->prepare($query);
@@ -162,6 +192,7 @@ class DbHelper{
         $stmt->execute();
         return $stmt->insert_id;
     }
+    
     public function associaPost($id, $idContet, $contentType) {
         if($contentType == "serietv"){
             $query = "INSERT INTO post_associati (idpost, idfilm, idserietv, idanime) VALUES ( ?, NULL, ?, NULL )";
@@ -182,6 +213,7 @@ class DbHelper{
             $stmt->execute();    
         }
     }
+    
     public function getUserPosts($userid){
         $query = "SELECT testo, data, immagine FROM post WHERE autore = ?";
         $stmt = $this->db->prepare($query);
@@ -272,6 +304,65 @@ class DbHelper{
         return $result;
     }
 
+    public function getLastFilmPostRead($idutente, $idfilm) {
+        $query = "SELECT * FROM ultimo_post_letto WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idfilm);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFilmPostsPublishedAfter($datapost, $idfilm) {
+        $query = "SELECT * FROM vista_post WHERE data > ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $datapost, $idfilm);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getLastSerieTvPostRead($idutente, $idserietv) {
+        $query = "SELECT * FROM ultimo_post_letto WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idserietv);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getSerieTvPostsPublishedAfter($datapost, $idserietv) {
+        $query = "SELECT * FROM vista_post WHERE data > ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $datapost, $idserietv);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getLastAnimePostRead($idutente, $idanime) {
+        $query = "SELECT * FROM ultimo_post_letto WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idanime);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAnimePostsPublishedAfter($datapost, $idanime) {
+        $query = "SELECT * FROM vista_post WHERE data > ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $datapost, $idanime);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
