@@ -8,9 +8,8 @@ main {
     background-color: white;
     border-radius: 5px;
     height: 50%;
-    width: 30%;
+    width: 100%;
     margin-top: 10%;
-    margin-left: 35%;
     box-shadow: 3px 3px 5px grey;
 }
 
@@ -44,4 +43,11 @@ button:hover {
 
 div > p {
     margin: 5px;
+}
+
+@media screen and (min-width:768px) {
+    main {
+        width: 30%;
+        margin-left: 35%;
+    }
 }

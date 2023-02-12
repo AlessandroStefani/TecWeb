@@ -27,12 +27,12 @@
                     <img src="<?php echo IMG_DIR.$infofilm["immagine"]?>" alt="immagine-link <?php echo $infofilm["nome"]?>">
                     <p class="content-title"><?php echo $infofilm["nome"]?></p>
                     <?php if($infofilm["notifiche"]): ?>             
-                        <span class="notification-badge"> 5 </span>
+                        <span class="notification-badge"> <?php echo($infofilm["numero-notifiche"]) ?> </span>
                     <?php endif; ?>
                 </a>
                 <?php endforeach ?>
                 
-                <a href="../php/content-page.php?click=0">
+                <a href="../php/content-page.php?film">
                     <img id="add-content">
                     <p class="content-title">Aggiungi Film</p>
                 </a>
@@ -48,12 +48,12 @@
                     <img src="<?php echo IMG_DIR.$infoserietv["immagine"]?>" alt="immagine-link <?php echo $infoserietv["nome"]?>">
                     <p class="content-title"><?php echo $infoserietv["nome"]?></p>                     
                     <?php if($infoserietv["notifiche"]): ?>             
-                        <span class="notification-badge"> 5 </span>
+                        <span class="notification-badge"> <?php echo($infoserietv["numero-notifiche"]) ?> </span>
                     <?php endif; ?>
                 </a>
                 <?php endforeach ?>
 
-                <a href="../php/content-page.php?click=1">
+                <a href="../php/content-page.php?serietv">
                     <img id="add-content">
                     <p class="content-title">Aggiungi SerieTv</p>
                 </a>
@@ -69,12 +69,12 @@
                     <img src="<?php echo IMG_DIR.$infoanime["immagine"]?>" alt="immagine-link <?php echo $infoanime["nome"]?>">
                     <p class="content-title"><?php echo $infoanime["nome"]?></p>                     
                     <?php if($infoanime["notifiche"]): ?>             
-                        <span class="notification-badge"> 5 </span>
+                        <span class="notification-badge"> <?php echo($infoanime["numero-notifiche"]) ?> </span>
                     <?php endif; ?>
                 </a>
                 <?php endforeach ?>
 
-                <a href="../php/content-page.php?click=2">
+                <a href="../php/content-page.php?anime">
                     <img id="add-content">
                     <p class="content-title">Aggiungi Anime</p>
                 </a>

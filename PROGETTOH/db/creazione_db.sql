@@ -83,12 +83,29 @@ CREATE TABLE IF NOT EXISTS `progweb`.`content_seguito` (
     FOREIGN KEY (`idutente`) REFERENCES `progweb`.`utente` (idutente),
     FOREIGN KEY (`idfilm`) REFERENCES `progweb`.`film` (idfilm),
     FOREIGN KEY (`idserietv`) REFERENCES `progweb`.`serietv` (idserietv),
-    FOREIGN KEY (`idanime`) REFERENCES `progweb`.`anime` (idanime),
-    UNIQUE(`idfilm`),
-    UNIQUE(`idserietv`),
-    UNIQUE(`idanime`)
+    FOREIGN KEY (`idanime`) REFERENCES `progweb`.`anime` (idanime)
 )
 ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `progweb`.`ultimo_post_letto` (
+    `idutente` INT,
+    `idpost` INT,
+    `idfilm` INT,
+    `idserietv` INT,
+    `idanime` INT,
+    `data` DATETIME NOT NULL,
+    FOREIGN KEY (`idpost`) REFERENCES `progweb`.`post` (idpost),
+    FOREIGN KEY (`idfilm`) REFERENCES `progweb`.`film` (idfilm),
+    FOREIGN KEY (`idserietv`) REFERENCES `progweb`.`serietv` (idserietv),
+    FOREIGN KEY (`idanime`) REFERENCES `progweb`.`anime` (idanime)
+)
+ENGINE = InnoDB;
+
+CREATE VIEW IF NOT EXISTS `progweb`.`vista_post` AS
+SELECT p.idpost, p.data, pa.idfilm, pa.idserietv, pa.idanime
+FROM `progweb`.`post` p, `progweb`.`post_associati` pa
+WHERE p.idpost = pa.idpost;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

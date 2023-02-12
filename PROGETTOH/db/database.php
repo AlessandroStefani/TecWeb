@@ -195,6 +195,66 @@ class DbHelper{
             $stmt->execute();    
         }
     }
+
+    public function getLastFilmPostRead($idutente, $idfilm) {
+        $query = "SELECT * FROM ultimo_post_letto WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idfilm);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFilmPostsPublishedAfter($datapost, $idfilm) {
+        $query = "SELECT * FROM vista_post WHERE data > ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $datapost, $idfilm);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getLastSerieTvPostRead($idutente, $idserietv) {
+        $query = "SELECT * FROM ultimo_post_letto WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idserietv);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getSerieTvPostsPublishedAfter($datapost, $idserietv) {
+        $query = "SELECT * FROM vista_post WHERE data > ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $datapost, $idserietv);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getLastAnimePostRead($idutente, $idanime) {
+        $query = "SELECT * FROM ultimo_post_letto WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $idutente, $idanime);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAnimePostsPublishedAfter($datapost, $idanime) {
+        $query = "SELECT * FROM vista_post WHERE data > ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $datapost, $idanime);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
