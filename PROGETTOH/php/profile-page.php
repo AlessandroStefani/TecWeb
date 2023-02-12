@@ -16,14 +16,18 @@ if(isset($_GET["idutente"])){
     $templateParams["userID"] = $_SESSION["idutente"];
 }
 
+if(isset($_POST["deleteOrder"]) && isset($_POST["idPost"])){
+    $dbh->deletePostByID($_POST["idPost"]);
+}
+
 foreach($dbh->getPostAssociati() as $associazionePost){
-    if($associazionePost["idfilm"] != NULL && $dbh->getPostByID(["idpost"])[0]["autore"] == $templateParams["userID"]){
+    if($associazionePost["idfilm"] != NULL && $dbh->getPostByID($associazionePost["idpost"])[0]["autore"] == $templateParams["userID"]){
         $templateParams["postFilm"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idfilm"], "nome" => $dbh->getFilmInfoByID($associazionePost["idfilm"])[0]["nome"], "tipo" => "film", "notifiche" => $dbh->getNotificaFilm($templateParams["userID"], $associazionePost["idfilm"])[0]];
     } else {
-        if($associazionePost["idserietv"] != NULL && $dbh->getPostByID(["idpost"])[0]["autore"] == $templateParams["userID"]){
+        if($associazionePost["idserietv"] != NULL && $dbh->getPostByID($associazionePost["idpost"])[0]["autore"] == $templateParams["userID"]){
             $templateParams["postSerietv"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idserietv"], "nome" => $dbh->getSerieTvInfoByID($associazionePost["idserietv"])[0]["nome"], "tipo" => "serietv", "notifiche" => $dbh->getNotificaSerietv($templateParams["userID"], $associazionePost["idserietv"])[0]];
         } else {
-            if($associazionePost["idanime"] != NULL && $dbh->getPostByID(["idpost"])[0]["autore"] == $templateParams["userID"]){
+            if($associazionePost["idanime"] != NULL && $dbh->getPostByID($associazionePost["idpost"])[0]["autore"] == $templateParams["userID"]){
                 $templateParams["postAnime"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idanime"], "nome" => $dbh->getAnimeInfoByID($associazionePost["idanime"])[0]["nome"], "tipo" => "anime", "notifiche" => $dbh->getNotificaAnime($templateParams["userID"], $associazionePost["idanime"])[0]];
             }
         }

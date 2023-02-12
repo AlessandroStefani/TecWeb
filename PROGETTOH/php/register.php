@@ -8,7 +8,7 @@ if(isset($_POST["uname"]) && isset($_POST["email"]) && isset($_POST["psw"]) && i
         $templateParams["erroreRegistrazione"] = "Email non valida";
     } else {
         if($dbh->registerUser($_POST["uname"], $_POST["email"], $_POST["psw"])){
-            header("location: ../php/home-page.php");
+            header("location: ../html/home.html");
         } else {
             $templateParams["erroreRegistrazione"] = "Email già in uso";            
         }
