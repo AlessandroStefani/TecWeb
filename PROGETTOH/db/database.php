@@ -65,14 +65,14 @@ class DbHelper{
     }
     
     public function getUserInfobyID($id){
-        $query = "SELECT username, `foto profilo` FROM utente WHERE idutente = ?";
+        $query = "SELECT idutente, email, username, `foto profilo` FROM utente WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
     public function getFollowedContent($idutente){
         $query = "SELECT idfilm, idserietv, idanime, notifiche FROM content_seguito WHERE idutente = ?";
         $stmt = $this->db->prepare($query);
@@ -166,7 +166,25 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    
+    public function getPostAnimebyID($id){
+        $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN anime a ON ps.idanime = a.idanime) WHERE a.idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    
+    public function getPostFilmbyID($id){
+        $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN film f ON ps.idfilm = f.idfilm) WHERE f.idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    
     public function insertPost($testoarticolo, $dataarticolo, $imgarticolo, $autore){
         $query = "INSERT INTO post (testo, immagine, autore, data) VALUES ( ?, ?, ?, ? )";
         $stmt = $this->db->prepare($query);
@@ -194,6 +212,96 @@ class DbHelper{
             $stmt->bind_param('ii', $id, $idContet);
             $stmt->execute();    
         }
+    }
+    
+    public function getUserPosts($userid){
+        $query = "SELECT testo, data, immagine FROM post WHERE autore = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userid);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function getPostAssociati(){
+        $query = "SELECT * FROM post_associati";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    public function getPostByID($id){
+        $query = "SELECT testo, data, immagine, autore FROM post WHERE idpost = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+
+    public function deletePostByID($id){
+        $query = "DELETE FROM post_associati WHERE idpost = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute(); 
+        $query = "DELETE FROM post WHERE idpost = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute(); 
+    }
+
+    public function getFollowersByID($id){
+        $query = "SELECT u.idutente, u.username FROM utente u, utente_seguito us WHERE u.idutente = us.idutente AND us.idutenteseguito = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    public function getFollowedByID($id){
+        $query = "SELECT u.idutente, u.username FROM utente_seguito us, utente u  WHERE us.idutenteseguito = u.idutente AND us.idutente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    public function addFollowByUserID($userid ,$followerid){
+        $query = "INSERT INTO utente_seguito (idutente, idutenteseguito) VALUES (?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $followerid);
+        $stmt->execute(); 
+    }
+    public function removeFollowByUserID($userid ,$followerid){
+        $query = "DELETE FROM utente_seguito WHERE idutente = ? AND idutenteseguito = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $followerid);
+        $stmt->execute();
+    }
+
+    public function getNotificaFilm($userid ,$id){
+        $query = "SELECT notifiche FROM content_seguito WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $id);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    public function getNotificaSerietv($userid ,$id){
+        $query = "SELECT notifiche FROM content_seguito WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $id);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
+    }
+    public function getNotificaAnime($userid ,$id){
+        $query = "SELECT notifiche FROM content_seguito WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $id);
+        $stmt->execute(); 
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        return $result;
     }
 
     public function getLastFilmPostRead($idutente, $idfilm) {

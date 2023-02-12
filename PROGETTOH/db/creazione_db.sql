@@ -101,6 +101,12 @@ CREATE TABLE IF NOT EXISTS `progweb`.`ultimo_post_letto` (
 )
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `progweb`.`utente_seguito`(
+    `idutente` INT,
+    `idutenteseguito` INT
+)
+ENGINE = InnoDB;
+
 CREATE VIEW IF NOT EXISTS `progweb`.`vista_post` AS
 SELECT p.idpost, p.data, pa.idfilm, pa.idserietv, pa.idanime
 FROM `progweb`.`post` p, `progweb`.`post_associati` pa
