@@ -1,13 +1,38 @@
 <?php 
 require_once '../php/bootstrap.php';
 
-$templateParams["titolo"] = $dbh->getSerieTvInfoByID(1)[0]["nome"];
-$templateParams["serieInfo"] = $dbh->getSerieTvInfoByID(1)[0];
-$templateParams["postSerie"] = $dbh->getPostSeriebyID(1);
+$templateParams["serieInfo"] = array();
+$templateParams["postSerie"] = array();
 $templateParams["notifiche"] = $_GET["notifiche"];
+$templateParams["tipo"] = $_GET["tipo"];
+$templateParams["idTipo"] = $_GET["id"];
+
+getInfoContent();
+
+function getInfoContent(){
+  global $dbh;
+  global $templateParams;
+  if($templateParams["tipo"] == "serietv"){
+    $templateParams["serieInfo"] = $dbh->getSerieTvInfoByID($_GET["id"])[0];
+    $templateParams["posts"] = $dbh->getPostSeriebyID($_GET["id"]);
+  } else {
+    if($_GET["tipo"] == "anime"){
+      $templateParams["serieInfo"] = $dbh->getAnimeInfoByID($_GET["id"])[0];
+      $templateParams["posts"] = $dbh->getPostAnimebyID($_GET["id"]);
+
+    } else {
+      if($_GET["tipo"] == "film"){
+        $templateParams["serieInfo"] = $dbh->getFilmInfoByID($_GET["id"])[0];
+        $templateParams["posts"] = $dbh->getPostFilmbyID($_GET["id"]);
+
+      }
+    }
+  }
+}
 
 if(isset($_POST["notif"]) && filter_has_var(INPUT_POST, "notif")){
-  $_SESSION["notifiche"] = !$_SESSION["notifiche"];
+  $templateParams["notifiche"] = !$templateParams["notifiche"];
+  // Fare una update nel db, nigga.
 }
 
 if((isset($_FILES["fileToUpload"]) && ($_FILES["fileToUpload"]["size"])) && (isset($_POST["postText"]) && strlen($_POST["postText"]))) {
@@ -23,6 +48,7 @@ if((isset($_FILES["fileToUpload"]) && ($_FILES["fileToUpload"]["size"])) && (iss
 }
 function inserisciPost($image, $text) {
   global $dbh;
+  global $templateParams;
   $imageName = NULL;
   $author = 1;
   $date = date("Y-m-d H:i:s");
@@ -74,7 +100,7 @@ function inserisciPost($image, $text) {
     // if everything is ok, try to upload file
     } else {
       if (move_uploaded_file($image["tmp_name"], $target_file)) {
-        $dbh->associaPost($dbh->insertPost($text, $date, $imageName, $author), 1, "serietv");
+        $dbh->associaPost($dbh->insertPost($text, $date, $imageName, $author), $templateParams["idTipo"], $templateParams["tipo"]);
         // InsertPost con testo = NULL e immagine diverso da null.
       } else {
         echo "Sorry, there was an error uploading your file.";
@@ -82,7 +108,7 @@ function inserisciPost($image, $text) {
     }    
   } else {
     if(isset($text)){
-      $dbh->associaPost($dbh->insertPost($text, $date, $imageName, $author), 1, "serietv");
+      $dbh->associaPost($dbh->insertPost($text, $date, $imageName, $author), $templateParams["idTipo"], $templateParams["tipo"]);
     }
   }
   echo "<meta http-equiv='refresh' content='0'>";

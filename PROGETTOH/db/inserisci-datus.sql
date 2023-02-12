@@ -36,3 +36,7 @@ INSERT INTO `content_seguito` (`idutente`, `idfilm`, `idserietv`, `idanime`, `no
 
 INSERT INTO `post_associati` (`idpost`, `idfilm`, `idserietv`, `idanime`) VALUES
 (2, NULL, 5, NULL);
+
+INSERT INTO `utente_seguito` (`idutente`, `idutenteseguito`) VALUES
+(1, 2),
+(2, 1);
