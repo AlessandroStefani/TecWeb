@@ -15,8 +15,9 @@ class DbHelper{
         $query = "INSERT INTO utente (username, email, password) VALUES (?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sss', $username, $email, $safepword);
-
-        return $stmt->execute();
+        $stmt->execute();
+        
+        return $stmt->insert_id;
     }
 
     public function checkLogin($email, $password){
@@ -362,6 +363,45 @@ class DbHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Add notifiche.
+    public function addNotificaFilm($userid, $idfilm){
+        $query = "INSERT INTO content_seguito (idutente, idfilm, idserietv, idanime, notifiche) VALUES (?, ?, NULL, NULL, 1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $idfilm);
+        $stmt->execute(); 
+    }
+    public function addNotificaSerietv($userid ,$idserietv){
+        $query = "INSERT INTO content_seguito (idutente, idfilm, idserietv, idanime, notifiche) VALUES (?, NULL, ?, NULL, 1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $idserietv);
+        $stmt->execute(); 
+    }
+    public function addNotificaAnime($userid ,$idanime){
+        $query = "INSERT INTO content_seguito (idutente, idfilm, idserietv, idanime, notifiche) VALUES (?, NULL, NULL, ?, 1)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii', $userid, $idanime);
+        $stmt->execute(); 
+    }
+    // Change notifiche.
+    public function ChangeNotificaFilm($userid ,$idfilm, $flagnotifica){
+        $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idfilm);
+        $stmt->execute(); 
+    }
+    public function ChangeNotificaSerietv($userid ,$idserietv, $flagnotifica){
+        $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idserietv);
+        $stmt->execute(); 
+    }
+    public function ChangeNotificaAnime($userid ,$idanime, $flagnotifica){
+        $query = "SELECT notifiche FROM content_seguito WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idanime);
+        $stmt->execute(); 
     }
 }
 
