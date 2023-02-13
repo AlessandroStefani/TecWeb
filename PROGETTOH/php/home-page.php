@@ -24,7 +24,12 @@ foreach ($tabellaContenutiSeguiti as $contenuto) {
 
 foreach ($filmSeguiti as $film) {
     if ($film["notifiche"]) {
-        $templateParams["info-film-seguiti"][] = $dbh->getFilmInfoByID($film["idfilm"])[0] + ["notifiche" => $film["notifiche"]] + ["numero-notifiche" => count($dbh->getFilmPostsPublishedAfter($dbh->getLastFilmPostRead($film["idfilm"])[0]["data"], $film["idfilm"]))];                              
+        $ultimo_post_letto = $dbh->getLastFilmPostRead($_SESSION["idutente"], $film["idfilm"]);
+        if (empty($ultimo_post_letto)){
+            $templateParams["info-film-seguiti"][] = $dbh->getFilmInfoByID($film["idfilm"])[0] + ["notifiche" => $film["notifiche"]] + ["numero-notifiche" => 0];
+        } else {
+            $templateParams["info-film-seguiti"][] = $dbh->getFilmInfoByID($film["idfilm"])[0] + ["notifiche" => $film["notifiche"]] + ["numero-notifiche" => count($dbh->getFilmPostsPublishedAfter($ultimo_post_letto[0]["data"], $film["idfilm"]))];
+        }
     } else {
         $templateParams["info-film-seguiti"][] = $dbh->getFilmInfoByID($film["idfilm"])[0] + ["notifiche" => $film["notifiche"]];
     }
@@ -34,7 +39,12 @@ foreach ($filmSeguiti as $film) {
  
 foreach ($serieTvSeguite as $serieTv) {
     if ($serieTv["notifiche"]) {
-        $templateParams["info-serietv-seguite"][] = $dbh->getSerieTvInfoByID($serieTv["idserietv"])[0] + ["notifiche" => $serieTv["notifiche"]] + ["numero-notifiche" => count($dbh->getSerieTvPostsPublishedAfter($dbh->getLastSerieTvPostRead($serieTv["idserietv"])[0]["data"], $serieTv["idserietv"]))];                              
+        $ultimo_post_letto = $dbh->getLastSerieTvPostRead($_SESSION["idutente"], $serieTv["idserietv"]);
+        if (empty($ultimo_post_letto)){
+            $templateParams["info-serietv-seguite"][] = $dbh->getSerieTvInfoByID($serieTv["idserietv"])[0] + ["notifiche" => $serieTv["notifiche"]] + ["numero-notifiche" => 0];
+        } else {
+            $templateParams["info-serietv-seguite"][] = $dbh->getSerieTvInfoByID($serieTv["idserietv"])[0] + ["notifiche" => $serieTv["notifiche"]] + ["numero-notifiche" => count($dbh->getSerieTvPostsPublishedAfter($ultimo_post_letto[0]["data"], $serieTv["idserietv"]))];
+        }                          
     } else {
         $templateParams["info-serietv-seguite"][] = $dbh->getSerieTvInfoByID($serieTv["idserietv"])[0] + ["notifiche" => $serieTv["notifiche"]];
     }
@@ -44,7 +54,12 @@ foreach ($serieTvSeguite as $serieTv) {
 
 foreach ($animeSeguiti as $anime) {
     if ($anime["notifiche"]) {
-        $templateParams["info-anime-seguiti"][] = $dbh->getAnimeInfoByID($anime["idanime"])[0] + ["notifiche" => $anime["notifiche"]] + ["numero-notifiche" => count($dbh->getAnimePostsPublishedAfter($dbh->getLastAnimePostRead($anime["idanime"])[0]["data"], $anime["idanime"]))];                              
+        $ultimo_post_letto = $dbh->getLastAnimePostRead($_SESSION["idutente"], $anime["idanime"]);        
+        if (empty($ultimo_post_letto)){
+            $templateParams["info-anime-seguiti"][] = $dbh->getAnimeInfoByID($anime["idanime"])[0] + ["notifiche" => $anime["notifiche"]] + ["numero-notifiche" => 0];
+        } else {
+            $templateParams["info-anime-seguiti"][] = $dbh->getAnimeInfoByID($anime["idanime"])[0] + ["notifiche" => $anime["notifiche"]] + ["numero-notifiche" => count($dbh->getAnimePostsPublishedAfter($ultimo_post_letto[0]["data"], $anime["idanime"]))];
+        }
     } else {
         $templateParams["info-anime-seguiti"][] = $dbh->getAnimeInfoByID($anime["idanime"])[0] + ["notifiche" => $anime["notifiche"]];
     }
