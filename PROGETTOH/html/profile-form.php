@@ -72,8 +72,9 @@
                 <div class="date_post-serie_link">
                     <p> <?php echo $post["post"][0]["data"]  ?> </p>
                     <a href="<?php echo "../php/serie_page.php?tipo=".$post["tipo"]."&id=".$post["id"]."&notifiche=".implode($post["notifiche"]) ?>"> <?php echo $post["nome"]?> </a>
-                    <form action="" method="POST">
-                        <input type="submit" value="Delete" name="deleteOrder">
+                    <form action="../php/profile-page.php" method="POST">
+                        <input type="hidden" name="idPost" value="<?php echo $post["post"][0]["idpost"] ?>">
+                        <input type="submit" value="Delete" name="deleteOrder" >
                     </form>
                 </div>
                 <?php if(isset($post["post"][0]["immagine"])): ?>
@@ -94,6 +95,10 @@
                 <div class="date_post-serie_link">
                     <p> <?php echo $post["post"][0]["data"]  ?> </p>
                     <a href="<?php echo "../php/serie_page.php?tipo=".$post["tipo"]."&id=".$post["id"]."&notifiche=".implode($post["notifiche"])?>"> <?php echo $post["nome"]?> </a>
+                    <form action="../php/profile-page.php" method="POST">
+                        <input type="hidden" name="idPost" value="<?php echo $post["post"][0]["idpost"] ?>">
+                        <input type="submit" value="Delete" name="deleteOrder" >
+                    </form>
                 </div>
                 <?php if(isset($post["post"][0]["immagine"])): ?>
                 <div class="post_image">
@@ -113,6 +118,10 @@
                 <div class="date_post-serie_link">
                     <p> <?php echo $post["post"][0]["data"]  ?> </p>
                     <a href="<?php echo "../php/serie_page.php?tipo=".$post["tipo"]."&id=".$post["id"]."&notifiche=".implode($post["notifiche"])?>"> <?php echo $post["nome"]?> </a>
+                    <form action="../php/profile-page.php" method="POST">
+                        <input type="hidden" name="idPost" value="<?php echo $post["post"][0]["idpost"] ?>">
+                        <input type="submit" value="Delete" name="deleteOrder" >
+                    </form>
                 </div>
                 <?php if(isset($post["post"][0]["immagine"])): ?>
                 <div class="post_image">
