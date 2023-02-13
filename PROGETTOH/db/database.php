@@ -408,7 +408,7 @@ class DbHelper{
         $stmt->bind_param('i', $iduser);
         $stmt->execute();
     }
-
+    
     public function deleteLastPostRead($idutente, $idcontenuto, $tipo) {
         if($tipo == "film") {
             $query = "DELETE FROM ultimo_post_letto WHERE idutente = ? AND idfilm = ?";
