@@ -7,8 +7,11 @@ if(isset($_POST["uname"]) && isset($_POST["email"]) && isset($_POST["psw"]) && i
     } else if(!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)){
         $templateParams["erroreRegistrazione"] = "Email non valida";
     } else {
-        if($dbh->registerUser($_POST["uname"], $_POST["email"], $_POST["psw"])){
-            header("location: ../html/home.html");
+        $idutente = $dbh->registerUser($_POST["uname"], $_POST["email"], $_POST["psw"]);
+        echo "$idutente";
+        if($idutente){
+            registerLoggedUser($dbh->getUserInfobyID($idutente)[0]);
+            header("location: ../php/home-page.php");
         } else {
             $templateParams["erroreRegistrazione"] = "Email già in uso";            
         }
