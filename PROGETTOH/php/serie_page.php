@@ -2,14 +2,17 @@
 require_once '../php/bootstrap.php';
 
 $templateParams["serieInfo"] = array();
-$templateParams["postSerie"] = array();
+$templateParams["posts"] = array();
 $templateParams["notifiche"] = $_GET["notifiche"];
 $templateParams["tipo"] = $_GET["tipo"];
 $templateParams["idTipo"] = $_GET["id"];
 
 getInfoContent();
-
 funzionebella();
+
+$dbh->deleteLastPostRead($_SESSION["idutente"], $templateParams["idTipo"], $templateParams["tipo"]);
+$dbh->insertLastPostRead($_SESSION["idutente"], end($templateParams["posts"]), $templateParams["idTipo"], $templateParams["tipo"]);
+
 
 function getInfoContent(){
   global $dbh;

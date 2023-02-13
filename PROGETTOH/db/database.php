@@ -160,7 +160,7 @@ class DbHelper{
     }
     
     public function getPostSeriebyID($id){
-        $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ?";
+        $query = "SELECT u.username, u.`foto profilo`,p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -169,7 +169,7 @@ class DbHelper{
     }
     
     public function getPostAnimebyID($id){
-        $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN anime a ON ps.idanime = a.idanime) WHERE a.idanime = ?";
+        $query = "SELECT u.username, u.`foto profilo`, p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN anime a ON ps.idanime = a.idanime) WHERE a.idanime = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -178,7 +178,7 @@ class DbHelper{
     }
     
     public function getPostFilmbyID($id){
-        $query = "SELECT u.username, u.`foto profilo`, p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN film f ON ps.idfilm = f.idfilm) WHERE f.idfilm = ?";
+        $query = "SELECT u.username, u.`foto profilo`, p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN film f ON ps.idfilm = f.idfilm) WHERE f.idfilm = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -385,6 +385,72 @@ class DbHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function addUserFollow($iduser){
+        $query = "INSERT INTO notifica_follow (idutente) VALUES (?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $iduser);
+        $stmt->execute();
+    }
+    
+    public function getUserFollowByUserID($iduser){
+        $query = "SELECT idutente FROM notifica_follow WHERE idutente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $iduser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    public function deleteUserFollow($iduser){
+        $query = "DELETE FROM notifica_follow WHERE idutente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $iduser);
+        $stmt->execute();
+    }
+
+    public function deleteLastPostRead($idutente, $idcontenuto, $tipo) {
+        if($tipo == "film") {
+            $query = "DELETE FROM ultimo_post_letto WHERE idutente = ? AND idfilm = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii', $idutente, $idcontenuto);
+            $stmt->execute();
+        }
+        if($tipo == "serietv") {
+            $query = "DELETE FROM ultimo_post_letto WHERE idutente = ? AND idserietv = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii', $idutente, $idcontenuto);
+            $stmt->execute();
+        }
+        if($tipo == "anime") {
+            $query = "DELETE FROM ultimo_post_letto WHERE idutente = ? AND idanime = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii', $idutente, $idcontenuto);
+            $stmt->execute();
+        }
+    }
+
+    public function insertLastPostRead($idutente, $ultimopost, $idcontenuto, $tipo) {
+        if($tipo == "film") {
+            $query = "INSERT INTO ultimo_post_letto (idutente, idpost, idfilm, idserietv, idanime, data) VALUES (?, ?, ?, NULL, NULL, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iiis', $idutente, $ultimopost["idpost"], $idcontenuto, $ultimopost["data"]);
+            $stmt->execute();
+        }
+        if($tipo == "serietv") {
+            $query = "INSERT INTO ultimo_post_letto (idutente, idpost, idfilm, idserietv, idanime, data) VALUES (?, ?, NULL, ?, NULL, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iiis', $idutente, $ultimopost["idpost"], $idcontenuto, $ultimopost["data"]);
+            $stmt->execute();
+        }
+        if($tipo == "anime") {
+            $query = "INSERT INTO ultimo_post_letto (idutente, idpost, idfilm, idserietv, idanime, data) VALUES (?, ?, NULL, NULL, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iiis', $idutente, $ultimopost["idpost"], $idcontenuto, $ultimopost["data"]);
+            $stmt->execute();
+        }
+    }
 }
+
 
 ?>

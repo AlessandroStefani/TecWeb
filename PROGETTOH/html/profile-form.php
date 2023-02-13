@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <nav class="nav-di-giovava">
+        <nav class="nav-di-giovava" id="<?php if($_SESSION["notifica_follow"]){echo("true");} else {echo("false");}?>">
         </nav>
     </header>
     <main>

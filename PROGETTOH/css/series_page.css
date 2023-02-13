@@ -10,54 +10,6 @@ body{
     text-decoration: none;
 }
 
-/* stile del menu di navigazione */
-
-.nav_bar {
-    display:flex;
-    width: 100%;
-    height: 110px;
-    background-color: #292929;
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-    align-items: center;
-    align-content: stretch;
-}
-  
-/* Style the links inside the navigation bar */
-.nav_bar a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 3% 3%;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-/* Change the color of links on hover */
-.nav_bar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Add a color to the active/current link */
-.nav_bar a.active {
-  background-color: #04AA6D;
-  color: white;
-}
-
-.nav_bar a i{
-    width: 100%;
-    margin-right: 1%;
-    color: 'white'
-}
-
-.nav_bar > img{ 
-    padding: 2%;
-    width: 50px;
-    height: 60px;
-}
-
 /* stile area centrale con titolo, immagine e descrizione serie */
 div.serie_info{
     text-align: center;
@@ -106,7 +58,7 @@ aside.right_aside{
 
 div.notification_check{
     display: inline-block;
-    margin-top: 150px;
+    margin-top: 2%;
     padding-right: 4%;
     padding-bottom: 3%;
     text-align: right;

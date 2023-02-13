@@ -4,18 +4,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><?php echo $templateParams["serieInfo"]["nome"] ?></title>
         <link rel="stylesheet" type="text/css" href="../css/series_page.css" />
+        <link rel="stylesheet" type="text/css" href="../css/nav-di-giovava-style.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <meta charset="UTF-8"/>
     </head>
-    <body>
-        <nav>
-            <div class="nav_bar">
-                <img src="../img/site_logo.PNG" alt="logo">
-                <a href="../php/home-page.php"><i class="fas fa-qrcode"></i> Home</a>
-                <a href="../php/profile-page.php"><i class="fas fa-user"></i>Profilo</a>
-                <a href="../php/content-page.php"><i class="fas fa-search"></i>Esplora</a> <!--<i class="fas fa-tv">-->
-            </div>
-        </nav>
+    <body>     
+        <header>
+            <nav class="nav-di-giovava" id="<?php if($_SESSION["notifica_follow"]){echo("true");} else {echo("false");}?>">
+            </nav>
+        </header>
 
         <aside class="right_aside">
             <div class="notification_check">
@@ -78,4 +75,5 @@
         </footer>
 
     </body>
+<script src="../js/nav-di-giovava.js" type="text/javascript"></script>
 </html>
