@@ -364,26 +364,6 @@ class DbHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    // Add notifiche.
-    public function addNotificaFilm($userid, $idfilm){
-        $query = "INSERT INTO content_seguito (idutente, idfilm, idserietv, idanime, notifiche) VALUES (?, ?, NULL, NULL, 1)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $userid, $idfilm);
-        $stmt->execute(); 
-    }
-    public function addNotificaSerietv($userid ,$idserietv){
-        $query = "INSERT INTO content_seguito (idutente, idfilm, idserietv, idanime, notifiche) VALUES (?, NULL, ?, NULL, 1)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $userid, $idserietv);
-        $stmt->execute(); 
-    }
-    public function addNotificaAnime($userid ,$idanime){
-        $query = "INSERT INTO content_seguito (idutente, idfilm, idserietv, idanime, notifiche) VALUES (?, NULL, NULL, ?, 1)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii', $userid, $idanime);
-        $stmt->execute(); 
-    }
     // Change notifiche.
     public function ChangeNotificaFilm($userid ,$idfilm, $flagnotifica){
         $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idfilm = ?";
