@@ -13,7 +13,6 @@ funzionebella();
 $dbh->deleteLastPostRead($_SESSION["idutente"], $templateParams["idTipo"], $templateParams["tipo"]);
 $dbh->insertLastPostRead($_SESSION["idutente"], end($templateParams["posts"]), $templateParams["idTipo"], $templateParams["tipo"]);
 
-
 function getInfoContent(){
   global $dbh;
   global $templateParams;

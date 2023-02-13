@@ -40,7 +40,7 @@
                 <article class="main_article">
                     <header>
                         <div class="profile_info">
-                            <img src="<?php echo IMG_DIR.$post["foto profilo"]?>" alt="Profile_Picture" >
+                            <a class="profile_link" href="../php/profile-page.php<?php if($post["idutente"] != $_SESSION["idutente"])echo("?idutente=".$post["idutente"]) ?>"><img class="Profile_Picture" src="<?php echo IMG_DIR.$post["foto profilo"]?>" alt="Profile_Picture"></a>
                             <p class="user_name"> <?php echo $post["username"]?> </p>
                             <p class="timestamp"> <?php echo $post["data"]?> </p>
                         </div>

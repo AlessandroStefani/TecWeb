@@ -160,7 +160,7 @@ class DbHelper{
     }
     
     public function getPostSeriebyID($id){
-        $query = "SELECT u.username, u.`foto profilo`,p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ? ORDER BY p.data ASC";
+        $query = "SELECT u.idutente, u.username, u.`foto profilo`,p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN serietv s ON ps.idserietv = s.idserietv) WHERE s.idserietv = ? ORDER BY p.data ASC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -169,7 +169,7 @@ class DbHelper{
     }
     
     public function getPostAnimebyID($id){
-        $query = "SELECT u.username, u.`foto profilo`, p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN anime a ON ps.idanime = a.idanime) WHERE a.idanime = ? ORDER BY p.data ASC";
+        $query = "SELECT u.idutente, u.username, u.`foto profilo`, p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN anime a ON ps.idanime = a.idanime) WHERE a.idanime = ? ORDER BY p.data ASC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -178,7 +178,7 @@ class DbHelper{
     }
     
     public function getPostFilmbyID($id){
-        $query = "SELECT u.username, u.`foto profilo`, p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN film f ON ps.idfilm = f.idfilm) WHERE f.idfilm = ? ORDER BY p.data ASC";
+        $query = "SELECT u.idutente, u.username, u.`foto profilo`, p.idpost ,p.testo, p.immagine, p.data FROM ((( utente u JOIN post p ON u.idutente = p.autore) JOIN post_associati ps ON p.idpost=ps.idpost) JOIN film f ON ps.idfilm = f.idfilm) WHERE f.idfilm = ? ORDER BY p.data ASC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute();

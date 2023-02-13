@@ -84,9 +84,18 @@ main > article {
     padding: 1.5% 1% 1.5% 1%;
 }
 
-main > article> section > div > img {
-    max-width: 30%;
-    max-height: 30%;
+.Profile_Picture{
+    max-height: 200px;
+    width: auto;
+    border: rgba(62, 29, 2, 0.598) solid 2px;
+    border-radius: 5px;
+    padding: .5%;
+}
+
+.profile_link{  
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
 }
 
 main > article > section{
@@ -102,19 +111,6 @@ main > article > section.comment {
     border: rgb(237, 116, 16) solid 3px;
     border-radius: 5px;
     padding: .75%;
-}
-
-img#article_image{
-    max-width: 30%;
-    max-height: 30%;
-}
-
-main > article > header > div > img {
-    padding: .5%;
-    max-width: 10%;
-    max-height: 10%;
-    border: rgba(62, 29, 2, 0.598) solid 2px;
-    border-radius: 5px;
 }
 
 main > article > section > p{
@@ -146,6 +142,11 @@ main > article > section > p{
 
 .comment{
     padding-top: 1%;
+}
+
+article > section > div > img {
+    max-height: 30%;
+    max-width: 30%;
 }
 
 /* stile della textbar utilizzata per mandare nuovi commenti */
