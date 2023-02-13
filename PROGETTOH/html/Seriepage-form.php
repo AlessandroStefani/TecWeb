@@ -20,8 +20,8 @@
         <aside class="right_aside">
             <div class="notification_check">
                 <form action="" method="POST">
-                    <input type="checkbox" name="notif" id="notif" onchange="" <?php if($templateParams["notifiche"]){echo "checked";} ?>>
-                    <label for="notif">Ricevi Notifiche</label>
+                    <input type="submit" name="notif" id="notif" <?php if($templateParams["notifiche"]){echo "checked";} ?>>
+                    <label for="notif"><?php echo ($templateParams["notifiche"] ? ("Notifiche: ON") : "Notifiche: OFF") ?></label>
                 </form>
             </div>
         </aside>

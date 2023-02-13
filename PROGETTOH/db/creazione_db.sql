@@ -19,7 +19,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `progweb`.`post` (
     `idpost` INT NOT NULL AUTO_INCREMENT,
-    `testo` TEXT NOT NULL,
+    `testo` TEXT,
     `immagine` VARCHAR(128),
     `autore` INT NOT NULL,
     `data` DATETIME NOT NULL,

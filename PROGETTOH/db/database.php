@@ -232,7 +232,7 @@ class DbHelper{
         return $result;
     }
     public function getPostByID($id){
-        $query = "SELECT testo, data, immagine, autore FROM post WHERE idpost = ?";
+        $query = "SELECT idpost, testo, data, immagine, autore FROM post WHERE idpost = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('i', $id);
         $stmt->execute(); 
@@ -280,6 +280,8 @@ class DbHelper{
         $stmt->execute();
     }
 
+    // Query per le notifiche.
+    // Get Notifiche.
     public function getNotificaFilm($userid ,$id){
         $query = "SELECT notifiche FROM content_seguito WHERE idutente = ? AND idfilm = ?";
         $stmt = $this->db->prepare($query);
@@ -304,7 +306,26 @@ class DbHelper{
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
-
+    // Change notifiche.
+    public function ChangeNotificaFilm($userid ,$idfilm, $flagnotifica){
+        $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idfilm);
+        $stmt->execute(); 
+    }
+    public function ChangeNotificaSerietv($userid ,$idserietv, $flagnotifica){
+        $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idserietv);
+        $stmt->execute(); 
+    }
+    public function ChangeNotificaAnime($userid ,$idanime, $flagnotifica){
+        $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idanime);
+        $stmt->execute(); 
+    }
+    
     public function getLastFilmPostRead($idutente, $idfilm) {
         $query = "SELECT * FROM ultimo_post_letto WHERE idutente = ? AND idfilm = ?";
         $stmt = $this->db->prepare($query);
