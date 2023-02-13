@@ -385,6 +385,25 @@ class DbHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    // Change notifiche.
+    public function ChangeNotificaFilm($userid ,$idfilm, $flagnotifica){
+        $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idfilm = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idfilm);
+        $stmt->execute(); 
+    }
+    public function ChangeNotificaSerietv($userid ,$idserietv, $flagnotifica){
+        $query = "UPDATE content_seguito SET notifiche = ? WHERE idutente = ? AND idserietv = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idserietv);
+        $stmt->execute(); 
+    }
+    public function ChangeNotificaAnime($userid ,$idanime, $flagnotifica){
+        $query = "SELECT notifiche FROM content_seguito WHERE idutente = ? AND idanime = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii', $flagnotifica, $userid, $idanime);
+        $stmt->execute(); 
+    }
 }
 
 ?>

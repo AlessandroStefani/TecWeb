@@ -58,7 +58,7 @@ function funzionebella(){
       }
   
     }
-  }  
+  }
 }
 
 if((isset($_FILES["fileToUpload"]) && ($_FILES["fileToUpload"]["size"])) && (isset($_POST["postText"]) && strlen($_POST["postText"]))) {
