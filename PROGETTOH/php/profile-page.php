@@ -6,6 +6,11 @@ $templateParams["postSerietv"] = array();
 $templateParams["postAnime"] = array();
 $templateParams["userID"] = 0;
 
+if(isset($_SESSION["notifica_follow"])) {
+    unset($_SESSION["notifica_follow"]);
+    $dbh->deleteUserFollow($_SESSION["idutente"]);
+}
+
 if(isset($_GET["idutente"])){
     $templateParams["UserInfo"] = $dbh->getUserInfobyID($_GET["idutente"])[0];
     $templateParams["UserPosts"] = $dbh->getUserPosts($_GET["idutente"]);
@@ -43,10 +48,12 @@ if($dbh->getFollowedByID($templateParams["userID"])){
 
 if(isset($_POST["follow"]) && $_POST["follow"] && isset($_GET["idutente"]) && $_GET["idutente"]){
     $dbh->addFollowByUserID($_SESSION["idutente"], $_GET["idutente"]);
+    $dbh->addUserFollow($_GET["idutente"]);
 }
 
 if( isset($_POST["unfollow"]) && $_POST["unfollow"] && isset($_GET["idutente"]) && $_GET["idutente"]){
     $dbh->removeFollowByUserID($_SESSION["idutente"], $_GET["idutente"]);
+    $dbh->deleteUserFollow($_GET["idutente"]);
 }
 
 require '../html/profile-form.php';

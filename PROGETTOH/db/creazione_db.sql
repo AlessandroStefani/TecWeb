@@ -112,6 +112,12 @@ SELECT p.idpost, p.data, pa.idfilm, pa.idserietv, pa.idanime
 FROM `progweb`.`post` p, `progweb`.`post_associati` pa
 WHERE p.idpost = pa.idpost;
 
+CREATE TABLE IF NOT EXISTS `progweb`.`notifica_follow` (
+    `idutente` INT,
+    UNIQUE(`idutente`)
+)
+ENGINE = InnoDB;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
