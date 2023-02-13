@@ -385,6 +385,30 @@ class DbHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function addUserFollow($iduser){
+        $query = "INSERT INTO notifica_follow (idutente) VALUES (?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $iduser);
+        $stmt->execute();
+    }
+
+    public function getUserFollowByUserID($iduser){
+        $query = "SELECT idutente FROM notifica_follow WHERE idutente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $iduser);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteUserFollow($iduser){
+        $query = "DELETE FROM notifica_follow WHERE idutente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $iduser);
+        $stmt->execute();
+    }
+
 }
 
 ?>

@@ -11,6 +11,14 @@
         </nav>
     </header>
     <main>
+        <?php if((isset($_GET["idutente"]) && $_SESSION["idutente"] == $_GET["idutente"]) || (!isset($_GET["idutente"]))): ?>
+        <aside class="logout-aside">
+            <form action="" method="POST">
+                <input type="submit" value="Logout" name ="logout">
+            </form>
+        </aside>
+        <?php endif ?>
+
         <section class="profile_info">
             <img src="<?php echo IMG_DIR.$templateParams["UserInfo"]["foto profilo"]?>" alt="ImmagineProfilo">
             <div class="profile_name">
