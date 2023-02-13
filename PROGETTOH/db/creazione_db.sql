@@ -103,7 +103,8 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `progweb`.`utente_seguito`(
     `idutente` INT,
-    `idutenteseguito` INT
+    `idutenteseguito` INT,
+    UNIQUE (`idutente`, `idutenteseguito`)
 )
 ENGINE = InnoDB;
 

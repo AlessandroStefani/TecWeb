@@ -34,13 +34,28 @@ if(isset($_POST["logout"])){
 
 foreach($dbh->getPostAssociati() as $associazionePost){
     if($associazionePost["idfilm"] != NULL && $dbh->getPostByID($associazionePost["idpost"])[0]["autore"] == $templateParams["userID"]){
-        $templateParams["postFilm"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idfilm"], "nome" => $dbh->getFilmInfoByID($associazionePost["idfilm"])[0]["nome"], "tipo" => "film", "notifiche" => $dbh->getNotificaFilm($templateParams["userID"], $associazionePost["idfilm"])[0]];
+        $notificaFilm = $dbh->getNotificaFilm($templateParams["userID"], $associazionePost["idfilm"]);
+        if (!empty($notificaFilm)) {
+            $templateParams["postFilm"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idfilm"], "nome" => $dbh->getFilmInfoByID($associazionePost["idfilm"])[0]["nome"], "tipo" => "film", "notifiche" => $notificaFilm[0]["notifiche"]];
+        } else {
+            $templateParams["postFilm"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idfilm"], "nome" => $dbh->getFilmInfoByID($associazionePost["idfilm"])[0]["nome"], "tipo" => "film", "notifiche" => 0];
+        }
     } else {
         if($associazionePost["idserietv"] != NULL && $dbh->getPostByID($associazionePost["idpost"])[0]["autore"] == $templateParams["userID"]){
-            $templateParams["postSerietv"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idserietv"], "nome" => $dbh->getSerieTvInfoByID($associazionePost["idserietv"])[0]["nome"], "tipo" => "serietv", "notifiche" => $dbh->getNotificaSerietv($templateParams["userID"], $associazionePost["idserietv"])[0]];
+            $notificaSerie = $dbh->getNotificaSerietv($templateParams["userID"], $associazionePost["idserietv"]);
+            if(!empty($notificaSerie)) {
+                $templateParams["postSerietv"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idserietv"], "nome" => $dbh->getSerieTvInfoByID($associazionePost["idserietv"])[0]["nome"], "tipo" => "serietv", "notifiche" => $notificaSerie[0]["notifiche"]];
+            } else {
+                $templateParams["postSerietv"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idserietv"], "nome" => $dbh->getSerieTvInfoByID($associazionePost["idserietv"])[0]["nome"], "tipo" => "serietv", "notifiche" => 0];
+            }
         } else {
             if($associazionePost["idanime"] != NULL && $dbh->getPostByID($associazionePost["idpost"])[0]["autore"] == $templateParams["userID"]){
-                $templateParams["postAnime"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idanime"], "nome" => $dbh->getAnimeInfoByID($associazionePost["idanime"])[0]["nome"], "tipo" => "anime", "notifiche" => $dbh->getNotificaAnime($templateParams["userID"], $associazionePost["idanime"])[0]];
+                $notificaAnime = $dbh->getNotificaAnime($templateParams["userID"], $associazionePost["idanime"]);
+                if(!empty($notificaAnime)) {
+                    $templateParams["postAnime"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idanime"], "nome" => $dbh->getAnimeInfoByID($associazionePost["idanime"])[0]["nome"], "tipo" => "anime", "notifiche" => $notificaAnime[0]["notifiche"]];
+                } else {
+                    $templateParams["postAnime"][] = ["post" => $dbh->getPostByID($associazionePost["idpost"]), "id" => $associazionePost["idanime"], "nome" => $dbh->getAnimeInfoByID($associazionePost["idanime"])[0]["nome"], "tipo" => "anime", "notifiche" => 0];
+                }
             }
         }
     }

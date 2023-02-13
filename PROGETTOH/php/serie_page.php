@@ -79,7 +79,7 @@ function inserisciPost($image, $text) {
   global $dbh;
   global $templateParams;
   $imageName = NULL;
-  $author = 1;
+  $author = $_SESSION["idutente"];
   $date = date("Y-m-d H:i:s");
   if(isset($image)){
     $target_dir = "../img/";
