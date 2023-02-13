@@ -22,6 +22,14 @@ if (isset($_SESSION["locked"])) {
         $_SESSION["errori"] += 1;
     } else {
         unset($_SESSION["errori"]);
+        //controlla notifica follow 
+        if(empty($dbh->getUserFollowByUserID($_SESSION["idutente"])[0])){
+            $_SESSION["notifica_follow"] = false;
+        } else {
+            $_SESSION["notifica_follow"] = true;
+        }
+        //=> $_SESSION["notifica_follow"] = true/false
+        //e nel caso aggiorna css nav
         header("location: ../php/home-page.php");
     }
 }
